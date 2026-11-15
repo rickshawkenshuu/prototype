@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="referrer" content="no-referrer">
+<title>研修生サイト</title>
+<meta name="description" content="一問一答・グルメ・電車路線・出勤前チェックをまとめた研修用サイト">
+<meta name="theme-color" content="#fbfaf8">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="研修生サイト">
+<meta property="og:description" content="一問一答・グルメ・電車路線・出勤前チェックをまとめた研修用サイト">
+<meta property="og:url" content="https://rikishaw.github.io/training_3/">
+<meta property="og:image" content="https://rikishaw.github.io/training_3/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='22' fill='%23c8161d'/%3E%3C/svg%3E">
+<style>
+:root{--bg:#fbfaf8;--card:#fff;--line:#e6e1da;--red:#c8161d;--red2:#a30f15;--ink:#1a1717;--sub:#6f6660}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;min-height:100vh;line-height:1.8}
+header{background:#fff;color:var(--ink);text-align:center;padding:34px 16px 26px;border-bottom:1px solid var(--line);position:relative;animation:fade 1s both}
+header::after{content:"";position:absolute;left:50%;bottom:-1px;width:56px;height:2px;margin-left:-28px;background:var(--red)}
+.mark{display:block;width:14px;height:14px;background:var(--red);border-radius:50%;margin:0 auto 14px}
+h1{font-size:clamp(1.6rem,6vw,2.2rem);letter-spacing:.4em;padding-left:.4em;font-weight:600}
+header p{color:var(--sub);font-size:.8rem;letter-spacing:.35em;margin-top:2px}
+main{width:100%;max-width:560px;margin:0 auto;padding:28px 16px 56px}
+.view{display:none}.view.on{display:block;animation:fade .7s both}
+h2{text-align:center;font-size:1.05rem;font-weight:600;letter-spacing:.25em;margin-bottom:22px;padding-bottom:12px;border-bottom:1px solid var(--line);position:relative}
+h2::after{content:"";position:absolute;left:50%;bottom:-1px;width:40px;height:2px;margin-left:-20px;background:var(--red)}
+.menu{display:grid;gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--red);border-radius:2px;padding:18px 16px;text-align:center;color:var(--ink);font:inherit;font-size:1.08rem;letter-spacing:.1em;cursor:pointer;transition:.25s;width:100%;display:block;}
+.card small{display:block;color:var(--sub);font-size:.78rem;letter-spacing:.06em;line-height:1.6}
+.card:hover,.card:focus-visible{border-left-color:var(--ink);transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.06);outline:none}
+.menu .card{animation:fade .8s both}
+.menu .card:nth-child(1){animation-delay:.1s}.menu .card:nth-child(2){animation-delay:.2s}.menu .card:nth-child(3){animation-delay:.3s}.menu .card:nth-child(4){animation-delay:.4s}.menu .card:nth-child(5){animation-delay:.5s}.menu .card:nth-child(6){animation-delay:.6s}.menu .card:nth-child(7){animation-delay:.7s}.menu .card:nth-child(8){animation-delay:.8s}
+.panel{background:var(--card);border:1px solid var(--line);border-top:2px solid var(--red);border-radius:2px;padding:28px 18px;text-align:center}
+.count{color:var(--sub);font-size:.85rem;letter-spacing:.15em}
+.q{font-size:clamp(1.15rem,4.5vw,1.45rem);margin:16px 0;min-height:4.5em;display:flex;align-items:center;justify-content:center}
+.a{border-top:1px dashed var(--line);padding-top:14px;color:var(--red);font-size:1.1rem;font-weight:700;min-height:5em;opacity:0;transition:opacity .5s;white-space:pre-line}
+.a.on{opacity:1}
+.btns{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.btn{flex:1 1 140px;padding:13px;border:1px solid var(--red);background:var(--red);color:#fff;font:inherit;letter-spacing:.1em;border-radius:3px;cursor:pointer;transition:.2s}
+.btn:hover{background:var(--red2)}
+.btn.ghost{background:#fff;color:var(--ink);border-color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:#fff}
+.back{margin-top:20px;text-align:center}
+.back button{background:none;border:none;color:var(--sub);font:inherit;cursor:pointer;letter-spacing:.1em;text-decoration:underline}
+.soon{color:var(--sub);text-align:center;padding:12px}
+.dl{text-align:left}
+.dl div{padding:12px 4px;border-bottom:1px solid var(--line)}
+.dl div:last-child{border:0}
+.dl dt{color:var(--red);font-size:.8rem;letter-spacing:.15em}
+.dl dd{margin:0}
+.shop h3{font-size:1.3rem;letter-spacing:.1em;text-align:center;margin-bottom:6px}
+.tag{display:inline-block;border:1px solid var(--red);color:var(--red);font-size:.75rem;padding:0 8px;border-radius:2px;margin-bottom:10px}
+.st{list-style:none;padding:0;margin:16px 0 4px 18px;border-left:4px solid var(--red);text-align:left}
+.st li{position:relative;padding:5px 0 5px 22px}
+.st li::before{content:"";position:absolute;left:-11px;top:13px;width:12px;height:12px;background:#fff;border:3px solid var(--ink);border-radius:50%}
+.st .cd{color:var(--red);font-size:.8rem;margin-right:8px;letter-spacing:.05em}
+.st .nt{color:var(--sub);font-size:.8rem;margin-left:6px}
+.line .more{display:none;margin-top:12px;font-size:1rem}
+.line.open .more{display:block}
+.line.open{border-left-color:var(--ink);cursor:default}
+.line .btn{margin-top:10px;padding:8px 16px;flex:none}
+.chk{display:flex;gap:12px;align-items:center;padding:14px 4px;border-bottom:1px solid var(--line);cursor:pointer;text-align:left}
+.chk input{accent-color:var(--red);width:20px;height:20px;flex:none}
+.chk input:checked+span{color:var(--sub);text-decoration:line-through}
+@keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+a.card{text-decoration:none}
+body{padding-bottom:84px}
+.list li b{color:var(--red);font-weight:600}
+.st .hd{margin:14px 0 4px -22px;padding:0 0 0 22px;font-weight:700;letter-spacing:.15em;color:var(--red)}
+.st .hd::before{display:none}
+.st .sub{color:var(--sub);font-size:.8rem;padding-left:22px}
+.st .sub::before{display:none}
+.btn:disabled{opacity:.35;cursor:default}
+#nav{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;gap:10px;justify-content:center;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);border-top:1px solid var(--line)}
+#nav button{flex:1;max-width:270px;padding:12px 8px;border:1px solid var(--ink);background:#fff;color:var(--ink);font:inherit;letter-spacing:.1em;border-radius:2px;cursor:pointer}
+#nav button#nt{background:var(--red);border-color:var(--red);color:#fff}
+#nav button:disabled{opacity:.35;cursor:default}
+
+.links{display:flex;flex-wrap:wrap;gap:8px;padding:0 4px 14px 32px;border-bottom:1px solid var(--line);margin-top:-6px;text-align:left}
+.lk{display:inline-block;padding:6px 12px;border:1px solid var(--red);color:var(--red);text-decoration:none;font-size:.85rem;letter-spacing:.05em;border-radius:2px;background:#fff}
+.lk:hover{background:var(--red);color:#fff}
+.lk::after{content:" ↗"}
+#play .panel.fin .q,#play .panel.fin .a,#play .panel.fin #prow1,#play .panel.fin #pnext{display:none}
+#pfin{display:none;text-align:left}
+#play .panel.fin #pfin{display:block}
+#pfin .ask{text-align:center;color:var(--red);font-weight:700;font-size:1.1rem;line-height:1.7;margin:4px 0 6px}
+#pfin h3{text-align:center;font-size:.95rem;letter-spacing:.2em;margin:14px 0 6px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+#pfin ul{list-style:none;padding:0;margin:0}
+#pfin li{padding:11px 4px;border-bottom:1px solid var(--line)}
+#pfin li::before{content:"・";color:var(--red)}
+#pfin .btns{margin-top:18px}
+.fare{text-align:center}
+.fare h3{font-size:.95rem;letter-spacing:.2em;margin:22px 0 10px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.fare h3:first-child{margin-top:0}
+.ft{width:100%;border-collapse:collapse;font-size:1.05rem}
+.ft th,.ft td{padding:11px 6px;border-bottom:1px solid var(--line)}
+.ft thead th{font-weight:600;letter-spacing:.2em;border-bottom:2px solid var(--ink)}
+.ft tbody th{font-weight:600;text-align:left;padding-left:10px}
+.ft td{font-weight:600}
+.fm{display:flex;flex-direction:column;gap:2px;padding:12px 8px;margin:8px 0;border:1px solid var(--line);border-left:3px solid var(--red);border-radius:2px;text-align:left}
+.fm .who{color:var(--sub);font-size:.82rem;letter-spacing:.15em}
+.fm .eq{font-size:1.25rem;font-weight:700;letter-spacing:.08em}
+.fm.off{text-align:center}.fm.off .eq{color:var(--red)}
+.fnote{color:var(--sub);font-size:.85rem;margin-top:4px}
+.chead2{font-size:.95rem;letter-spacing:.2em;margin:18px 0 10px;text-align:center;color:var(--sub)}
+.card.off{opacity:.45;cursor:default;border-left-color:var(--line)}
+.card.off:hover{transform:none;box-shadow:none}
+.cmap{position:relative;z-index:0;height:40vh;min-height:260px;max-height:480px;border:1px solid var(--line);border-radius:2px;background:#eee;margin-bottom:14px}
+.cmap.nomap::after{content:"地図を読み込めませんでした。通信環境を確認して、開き直してください。";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:20px;text-align:center;color:var(--sub);font-size:.9rem}
+.cstep{padding:20px 16px}
+.chead{margin:8px 0 4px}
+.cdesc{font-size:1.15rem;font-weight:600;line-height:1.7;min-height:1.7em;margin-top:6px}
+.csub{color:var(--sub);font-size:.9rem;min-height:1.6em}
+.tt{display:inline-block;padding:2px 14px;border-radius:2px;font-weight:700;letter-spacing:.15em;font-size:1.15rem;border:2px solid var(--ink);color:var(--ink);background:#fff}
+.tt.t-right{border-color:var(--red);color:var(--red)}
+.tt.t-two{background:var(--red);border-color:var(--red);color:#fff}
+.tt.t-start,.tt.t-goal{background:var(--ink);color:#fff}
+.twosteps{display:none;text-align:left;margin:10px 0 0;padding:12px 12px 12px 34px;border:1px solid var(--red);border-radius:2px;background:#fff7f7;line-height:1.8}
+.twosteps.on{display:block}
+.clist h3{font-size:.95rem;letter-spacing:.2em;margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.slist{text-align:left;padding-left:2.2em;margin:0}
+.slist li{padding:9px 2px;border-bottom:1px solid var(--line);cursor:pointer}
+.slist li .tt{font-size:.8rem;padding:0 8px;margin-right:8px;border-width:1px}
+.slist li span{font-size:.9rem}
+.arw{background:none;border:0}
+.arw i{display:block;width:0;height:0;margin:3px auto;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:12px solid #c8161d;transform-origin:50% 50%}
+.arw.dim i{opacity:.35}
+.arw.on i,.arw.ink i{border-bottom-color:#1a1717}
+.pin{background:none;border:0}
+.pin span{display:flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#fff;border:2px solid #1a1717;font:700 11px/1 sans-serif;color:#1a1717;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.pin.right span{border-color:#c8161d;color:#c8161d}
+.pin.two span{background:#c8161d;border-color:#c8161d;color:#fff}
+.pin.cur span{width:30px;height:30px;margin:-3px;font-size:13px;background:#1a1717;border-color:#fff;color:#fff}
+.pin.cur.right span,.pin.cur.two span{background:#c8161d}
+.flag{background:none;border:0}
+.flag span{display:block;text-align:center;background:#1a1717;color:#fff;font:700 11px/22px sans-serif;border-radius:2px;letter-spacing:.1em}
+.flag.goal span{background:#fff;color:#1a1717;border:1px solid #1a1717;line-height:20px}
+.stopmark{background:none;border:0}
+.stopmark span{display:flex;align-items:center;justify-content:center;width:22px;height:22px;background:#c8161d;color:#fff;font:700 12px/1 sans-serif;transform:rotate(45deg)}
+.stopmark span b{transform:rotate(-45deg)}
+.slabel{background:none;border:0;width:0!important;height:0!important}
+.slabel span{position:absolute;left:0;top:0;white-space:nowrap;transform:translate(-50%,calc(-100% - 9px));background:rgba(255,255,255,.94);color:#1a1717;border:1px solid #1a1717;border-radius:2px;padding:1px 7px;font:700 12px/1.5 "Hiragino Sans","Yu Gothic",sans-serif;letter-spacing:.06em;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+.slabel.v span{writing-mode:vertical-rl;transform:translate(9px,-50%);padding:7px 1px}
+.slabel.on span{background:#1a1717;color:#fff;font-size:13px}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+<header><span class="mark"></span><h1>研修生サイト</h1></header>
+<main>
+  <section class="view on" id="home">
+    <div class="menu">
+      <button class="card" data-go="quizmenu">研修生一問一答</button>
+      <button class="card" data-go="courses">基準コース<small>地図で順路を確認</small></button>
+      <button class="card" data-go="gourmet">浅草グルメ</button>
+      <button class="card" data-go="train">電車路線</button>
+      <button class="card" data-go="fare">人力車料金計算方法</button>
+      <a class="card" href="https://www.google.com/maps/d/u/0/viewer?mid=1O4N63zRXXhBYlwskBWLnWKOyMqNeOb34&hl=ja&femb=1&ll=35.713707239212994%2C139.7975229764587&z=16" target="_blank" rel="noopener noreferrer">浅草トイレマップ<small>Googleマップが開きます</small></a>
+      <button class="card" data-go="check">出勤前確認事項</button>
+      <button class="card" data-go="after">出勤後確認事項</button>
+    </div>
+  </section>
+
+  <section class="view" id="quizmenu">
+    <h2>研修生一問一答</h2>
+    <div class="menu">
+      <button class="card" data-go="q132menu">公式の132問<small>範囲を選べます</small></button>
+      <button class="card" data-go="fukumenu">浅草七福神一問一答</button>
+      <button class="card" id="go5">5つのメイン寺・神社一問一答<small>30問</small></button>
+      <button class="card" id="gopast">過去問<small>132問に含まれない問題</small></button>
+    </div>
+  </section>
+
+  <section class="view" id="q132menu">
+    <h2>公式の132問</h2>
+    <div class="menu" id="rangemenu"></div>
+  </section>
+
+  <section class="view" id="fukumenu">
+    <h2>浅草七福神</h2>
+    <div class="menu">
+      <button class="card" id="gofuku1">お寺・神社 → 七福神<small>寺社が問題、七福神が回答</small></button>
+      <button class="card" id="gofuku2">七福神 → お寺・神社<small>七福神が問題、寺社が回答</small></button>
+      <button class="card" data-go="fukulist">一覧</button>
+    </div>
+  </section>
+
+  <section class="view" id="fukulist">
+    <h2>浅草七福神 一覧</h2>
+    <div class="panel"><ul class="list" id="fukuul"></ul></div>
+  </section>
+
+  <section class="view" id="play">
+    <h2 id="ptitle"></h2>
+    <div class="panel">
+      <div class="count" id="pcount"></div>
+      <p class="q" id="pq"></p>
+      <div class="a" id="pa"></div>
+      <div id="pfin"></div>
+      <div class="btns" id="prow1">
+        <button class="btn" id="pshow">回答を表示</button>
+      </div>
+      <div class="btns">
+        <button class="btn ghost" id="pprev">← 一つ前の問題</button>
+        <button class="btn ghost" id="pnext">次の問題へ →</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="view" id="gourmet">
+    <h2 id="gtitle">浅草グルメ</h2>
+    <div class="menu" id="gbody"></div>
+  </section>
+
+  <section class="view" id="train">
+    <h2>電車路線</h2>
+    <div class="menu" id="lines"></div>
+  </section>
+
+  <section class="view" id="fare">
+    <h2>人力車料金計算方法</h2>
+    <div class="panel fare">
+      <h3>60分以下は表を暗記</h3>
+      <table class="ft">
+        <thead><tr><th></th><th>二人</th><th>一人</th></tr></thead>
+        <tbody>
+          <tr><th>10分</th><td>5,000円</td><td>4,000円</td></tr>
+          <tr><th>20分</th><td>8,000円</td><td>7,000円</td></tr>
+          <tr><th>30分</th><td>10,000円</td><td>9,000円</td></tr>
+          <tr><th>45分</th><td>15,000円</td><td>13,000円</td></tr>
+          <tr><th>60分</th><td>20,000円</td><td>16,000円</td></tr>
+        </tbody>
+      </table>
+      <h3>60分より長い場合は式を使う</h3>
+      <div class="fm"><span class="who">二人の場合</span><span class="eq">300T ＋ 2000 ＝ 料金</span></div>
+      <div class="fm"><span class="who">一人の場合</span><span class="eq">250T ＋ 1000 ＝ 料金</span></div>
+      <p class="fnote">T ＝ 乗車時間（分）</p>
+      <h3>優待の場合</h3>
+      <div class="fm off"><span class="eq">10％オフ</span></div>
+    </div>
+  </section>
+
+  <section class="view" id="courses">
+    <h2>基準コース</h2>
+    <div id="courselist"></div>
+  </section>
+
+  <section class="view" id="coursemap">
+    <h2 id="cmtitle"></h2>
+    <div id="cmap" class="cmap"></div>
+    <div class="panel cstep" id="cstep">
+      <div class="count" id="cmcount"></div>
+      <div class="chead" id="cmhead"></div>
+      <p class="cdesc" id="cmdesc"></p>
+      <p class="csub" id="cmsub"></p>
+      <ol class="twosteps" id="cmtwo">
+        <li>交差点を直進して、向こう側の角まで進む</li>
+        <li>角で止まり、右へ向きを変える</li>
+        <li>信号が青になるまで待つ</li>
+        <li>青になったら直進する</li>
+      </ol>
+      <div class="btns">
+        <button class="btn ghost" id="cmprev">← 前へ</button>
+        <button class="btn" id="cmnext">次へ →</button>
+      </div>
+      <div class="btns"><button class="btn ghost" id="cmall">全体を見る</button><button class="btn ghost" id="cmhome">開始地点に戻る</button></div>
+    </div>
+    <div class="panel clist" id="cmlist"></div>
+  </section>
+
+  <section class="view" id="check">
+    <h2>出勤前確認事項</h2>
+    <div class="panel">
+      <label class="chk"><input type="checkbox"><span>今日のレーンは？</span></label>
+      <label class="chk"><input type="checkbox"><span>今日のなんの日（祝日）？</span></label>
+      <label class="chk"><input type="checkbox"><span>直近の浅草のイベントは？</span></label><div class="links"><a class="lk" href="https://www.asakusa-shinnaka.com/calendar/" target="_blank" rel="noopener noreferrer">浅草イベントカレンダー</a><a class="lk" href="https://t-navi.city.taito.lg.jp/event?" target="_blank" rel="noopener noreferrer">台東区公式観光情報サイト</a></div>
+      <label class="chk"><input type="checkbox"><span>スカイツリーのライトアップのテーマは？</span></label><div class="links"><a class="lk" href="https://www.tokyo-skytree.jp/enjoy/lighting/" target="_blank" rel="noopener noreferrer">スカイツリー ライトアップ</a></div>
+      <label class="chk"><input type="checkbox"><span>今日自分はなぜ出勤するのか？</span></label>
+      <label class="chk"><input type="checkbox"><span>会社への感謝</span></label>
+      <div class="btns"><button class="btn ghost" id="reset">チェックをリセット</button></div>
+    </div>
+  </section>
+
+  <section class="view" id="after">
+    <h2>出勤後確認事項</h2>
+    <div class="panel">
+      <label class="chk"><input type="checkbox"><span>車を拭いた布を返す</span></label>
+      <label class="chk"><input type="checkbox"><span>インカムを戻す</span></label>
+      <label class="chk"><input type="checkbox"><span>名札をしまう（持ち帰らない）</span></label>
+      <label class="chk"><input type="checkbox"><span>かっぱ、傘を干す（雨の日）</span></label>
+      <label class="chk"><input type="checkbox"><span>足袋を乾かす（雨の日）</span></label>
+      <label class="chk"><input type="checkbox"><span>研修シートを書く</span></label>
+      <label class="chk"><input type="checkbox"><span>会社への感謝</span></label>
+      <div class="btns"><button class="btn ghost" id="reset2">チェックをリセット</button></div>
+    </div>
+  </section>
+</main>
+
+<nav id="nav">
+  <button id="nb">← 戻る</button>
+  <button id="nt">トップに戻る</button>
+</nav>
+
+<script>
+const QA=[["東京オリンピックはいつ開催されたか？", "1964年（昭和39年）10月10日"], ["隅田川の源流は？", "埼玉県・山梨県・長野県の三県が境を接する甲武信ヶ岳"], ["雷おこしの由来は？", "「家を起こす」「名を起こす」をかけた縁起物のお菓子"], ["浅草寺現在の本堂はいつ再建された？", "1958年（昭和33年）"], ["宝蔵門は元々何と呼ばれていた？", "仁王門"], ["アサヒスーパードライホールの全長と重量は？", "全長44m・重量360t"], ["五重塔は誰が建立した？", "平公雅（たいらのきんまさ）"], ["日本で最初の地下鉄はいつできた？", "1927年（昭和2年）・銀座線 浅草〜上野"], ["現在の五重塔は何年に再建された？", "1973年（昭和48年）"], ["浅草寺の七福神は？そのご利益は？", "大黒天／糧食・財宝・商売繁盛"], ["えんじゅの木とはどんな木？", "浅草神社の御神木。観音様を最初に安置したとされる木"], ["こち亀、両さんの石碑はどこにある？", "浅草神社の鳥居をくぐって左側"], ["浅草神社の七福神は？そのご利益は？", "恵比寿尊／商売繁盛"], ["待乳山聖天のご本尊は？", "大聖歓喜天（だいしょうかんぎてん）"], ["待乳山聖天の七福神は？そのご利益は？", "毘沙門天／心に勇気と決断力"], ["雷門のサイズは？", "直径3.3m・高さ3.9m・重量700kg"], ["「大根まつり」「聖天まつり」は毎年何月何日？", "大根まつり：1月7日\n聖天まつり：9月20日"], ["待乳山聖天のはじまりはいつ？", "595年9月20日"], ["桜の花言葉は？", "優美な女性・良い教育"], ["被官稲荷はどこにある？ご利益は？", "浅草神社右奥／出世・就職"], ["牛嶋神社のはじまりは？", "860年"], ["牛嶋神社の横、隅田公園で明治天皇に初めて振舞われた食べ物は？", "あんぱん／現在の銀座木村屋"], ["伝法院とはなに？いつできた？", "浅草寺のお坊さんが寝泊まりしたり、修行するところ／1777年"], ["七福神とは？", "中国・インド・日本の神様を集めたもの。それぞれ違うご利益を持つ"], ["花やしきはなぜ「花やしき」という？", "植物園にお屋敷があったから"], ["花やしきはいつできた？", "1853年"], ["西の下町の中にあるWINSとは何？", "場外馬券場"], ["WINSの場所は昔何があった？", "新世界（日本初のキャバレー）"], ["弁財天のご利益は？", "主に技芸上達"], ["浅草弁才天のご利益は？", "「才」の文字から、技芸上達"], ["時の鐘はいつ誰が作った？", "1692年／江戸幕府5代将軍・徳川綱吉"], ["凌雲閣はいつ建てられた？別名は？", "1890年（明治23年）／浅草十二階"], ["凌雲閣の構造は？", "1階〜10階がレンガ造り、11・12階が木造"], ["駒形堂とは何？", "隅田川で観音像が現れた場所に建てられた堂"], ["凌雲閣は何を模して建てられた？", "エッフェル塔"], ["電気館とは何？", "日本初の映画館"], ["浅草ビューホテルの場所には昔何があった？", "松竹国際劇場"], ["国際通りの名前の由来は？", "松竹国際劇場がある通りだったため"], ["木馬館とは何？", "大衆演劇の劇場"], ["たぬき通りのたぬきはどこのたぬき？", "浅草"], ["鎮護堂のたぬきはどこのたぬき？", "上野"], ["浅草演芸ホールとは？", "落語を中心とした寄席"], ["東洋館とは？元々は何だった？", "元々はフランス座"], ["待乳山聖天のシンボルは？", "巾着・大根"], ["今戸神社のはじまりはいつ？", "1063年"], ["今戸神社の御祭神は？", "応神天皇・イザナギノミコト・イザナミノミコト"], ["天照大御神の子孫は？", "天皇"], ["新選組とは？", "江戸幕府側についた警備隊"], ["武蔵国とは？", "埼玉県・東京都・神奈川県の一部"], ["随身門とは？", "神を守るために神を安置した門"], ["神仏分離令とは？それまでの考え方は？", "神道と仏教、神と仏、神社と寺院を区別すること\nそれまでは神仏習合"], ["四天王とは？", "仏教の東西南北を守る4人の守護神"], ["時の鐘はなぜ回収された？", "戦時中の鉄不足により"], ["火除け用地とは？", "火災の延焼を防ぐための土地"], ["キャバレーとは？", "舞台のあるレストラン"], ["トーキーとは？", "映像と音声が同期した映画"], ["花やしきの貸し切り料金は最安でいくら？", "25万円から"], ["浅草公会堂はもともと何だった？", "台東区役所（旧浅草区役所）"], ["スターの広場、一番最初はいつ？", "1979年（昭和54年）"], ["花川戸とは？", "馬道通り・助六夢通り・言問通りに囲まれた三角地帯"], ["隅田川の全長は？", "23.5km"], ["水上バス「浅草」はどこを通る？", "浅草〜お台場\n日の出桟橋・豊洲・浜離宮などを経由"], ["アサヒビール本社は何階建て？", "22階"], ["ねずみ小僧の墓はどこにある？", "墨田区両国の回向院"], ["浅草で一番最初に咲く桜は？", "河津桜"], ["浅草寺のご本尊は？", "聖観世音菩薩"], ["出世観音像の頭はいつのもの？", "室町時代後期くらい"], ["浅草寺の瓦の枚数は？", "89,000枚"], ["浅草寺の宗派は？", "聖観音宗"], ["神谷バーの創業は？", "1880年（明治13年）"], ["東京大空襲はいつあった？", "1945年（昭和20年）3月10日"], ["三社祭はいつ行われる？", "5月17・18日に近い金・土・日"], ["東照宮とは何？", "徳川家康を祀る神社"], ["浅草の表参道とは？渋谷区にある表参道は何の参道？", "仲見世通り／明治神宮"], ["菊の御紋は誰の家紋？", "天皇"], ["お寺の入り口には何がある？", "山門"], ["浅草寺参拝時に唱える言葉は？", "南無観世音菩薩"], ["トーキーとは？", "映像と音声が同期した映画"], ["神社の入口は何がある？", "鳥居"], ["狛犬の意味は？", "魔除け"], ["お寺参拝時、音を立てない？音を立てる？その理由は？", "立てない／仏様が瞑想しているため"], ["神社参拝時、音を立てない？音を立てる？その理由は？", "立てる／神様を呼ぶため"], ["江戸時代、浅草はなぜ賑わっていた？", "浅草寺が江戸幕府の祈願所だったため"], ["江戸五街道とは？", "東海道・日光街道・奥州街道・中山道・甲州街道"], ["江戸幕府・将軍徳川家康は何の戦いにより天下統一した？", "関ヶ原の戦い"], ["江戸時代はいつからいつまで？", "1603年〜1868年"], ["浅草はなぜ日本一の歓楽街ではなくなった？", "家庭にテレビが普及し、浅草に来なくてもエンターテインメントを楽しめるようになったため"], ["浅草はなぜ日本一の歓楽街だった？", "江戸時代の参詣・歌舞伎・遊郭から続き、戦後まで文化発祥の中心地だったため"], ["浅草の名前の由来は？", "もともと湿地帯で根が張らず、背の低い草しか生えなかったため"], ["神社仏閣には龍の彫刻や絵画が多い。その理由は？", "水の神様である龍を祀り、火事防止のため"], ["神社とお寺の絶対的な違いは？", "宗教の違い"], ["ソメイヨシノの由来は？", "染井村（駒込）の植木職人が、奈良県の吉野山の桜を品種改良して作ったことから"], ["浅草神社の家紋は？その意味は？", "三網紋（さんあみもん）／投網の網を表し、檜前浜成・竹成・土師真中知の3人を表す"], ["銀座線はどこからどこまで？", "銀座線／渋谷〜浅草"], ["浅草線はどこからどこまで？", "成田空港〜羽田空港"], ["東武線どこからどこまで？", "東武伊勢崎線／浅草〜伊勢崎"], ["つくばエクスプレスどこからどこまで？", "つくばエクスプレス／秋葉原〜つくば"], ["アサヒビールのオブジェの名前は？", "フラムドール"], ["浅草寺の本堂が最後に焼失した原因は？", "東京大空襲"], ["浅草寺はなぜ江戸の祈願所に制定された？", "江戸城の鬼門（悪い運気）にあたる場所だったため"], ["関東大震災はいつ？", "1923年（大正12年）9月1日"], ["松下電器（パナソニック）創始者・松下幸之助の異名は？", "経営の神様"], ["スカイツリー本体の色は？", "スカイツリーホワイト"], ["スカイツリーのエレベーターは何人乗りが何台？", "40人乗り・4台"], ["世界で高さ第3位のスカイツリー、第1位は？", "ブルジュ・ハリファ"], ["浅草寺本堂の瓦の素材は？", "チタン"], ["雷門の正式名称は？", "風雷神門"], ["仲見世通りは浅草寺までおよそ何mある？", "250m"], ["六区通り、予約済みの看板に入る予定の人は？", "ビートたけし"], ["予約済み看板に入る予定の人の師匠は？", "深見千三郎"], ["東武線が乗り入れている駅は？", "松屋浅草"], ["花やしきを誰が作った？", "森田六三郎"], ["五重塔は何年に建立した？", "942年"], ["日本で最初の地下鉄は何線で区間は？", "銀座線／上野〜浅草"], ["駒形堂とはどこにある？", "駒形橋西詰交差点"], ["凌雲閣、名前の由来は？", "「雲を凌ぐほど高い」という意味"], ["浅草寺の年間参拝者数は？", "約3,000万人"], ["江戸五街道の起点は？", "日本橋"], ["駒形堂に祀られているのは？", "馬頭観音"], ["凌雲閣に日本初で取り付けられたものは？", "電動式エレベーター"], ["浅草文化観光センターの設計士は？", "隈研吾"], ["広小路とは何？", "火事の延焼を防ぐための幅の広い街路"], ["浅草広小路とは？", "雷門通り"], ["明治時代は何年間？", "45年間"], ["大正は何年間？", "15年間"], ["昭和は何年間？", "64年間"], ["平成は何年間？", "31年間"], ["葵の御紋は誰の家紋？", "徳川家康"], ["浅草があるのは何区？", "台東区"], ["浅草寺の裏手を通称何と呼ぶ？", "観音裏／奥浅草"], ["浅草寺の西側、調理器具の問屋街を何と呼ぶ？", "かっぱ橋道具街"], ["浅草から吾妻橋を超えると何区？", "墨田区"]];
+const RICE=[["ぼたん", "ラーメン・中華", "11:00〜20:30（金休）", "〜¥999", "1948年創業。オムライス、餃子、ニラレバが人気"], ["餃子の王様", "ラーメン・中華", "11:15〜14:00／16:00〜20:00、土日は通し営業（火休）", "¥1,000〜1,999", "餃子百名店。大きめで野菜多め、にんにく控えめ 【メモ】15〜20分待ちのことも。チャーハン、ニラレバ、肉餃子もおすすめ"], ["とんかつ とお山", "肉料理", "11:00〜21:30", "¥1,000〜1,999", "肉厚のロースカツが人気。平日ランチは16時まで"], ["牛カツ 京都勝牛", "肉料理", "10:30〜22:30", "¥1,000〜1,999", "定番は牛カツ膳。オレンジ通り、サンリオショップの向かい"], ["風来庵", "そば・うどん", "9:00〜22:00（水休）", "〜¥999", "名物は肉そば。ラー油の有無を選べて大盛り無料。現金のみ"], ["竹庵", "そば・うどん", "11:00〜20:00（木休）", "¥1,000〜1,999", "仲見世と新仲見世の角にある老舗。天丼の看板が目立つが、うどん屋"], ["家康うどん", "そば・うどん", "11:30〜15:00（夜は不定）", "¥1,000〜1,999", "一番人気は具だくさんの「家康うどん」。現金のみ"], ["並木藪蕎麦", "そば・うどん", "11:00〜19:30（水・木休）", "¥1,000〜1,999", "1913年創業。濃いつゆの江戸前そば。そば百名店。予約不可"], ["生田庵", "ラーメン・中華", "24時間", "〜¥999", "ライス無料、チャーシュー多め。カウンター13席"], ["らぁ麺はやし田", "ラーメン・中華", "10:00〜23:00", "¥1,000〜1,999", "鶏白湯と醤油が中心。提供が早い。英語・中国語の注文端末あり"], ["ラーメン渡邊", "ラーメン・中華", "11:30〜22:00（火休）", "〜¥999", "鶏白湯を白（塩）・黒（醤油）・赤（辛）などから選べる。現金のみ"], ["とおりゃんせ", "ラーメン・中華", "11:00〜19:00", "¥1,000〜1,999", "安い。多言語メニューあり"], ["ゆずラボ（汁なし担々麺）", "ラーメン・中華", "11:00〜22:00、土日祝〜21:00", "¥1,000〜1,999", "柚子香る汁なし担々麺（1,100円）。雷門から徒歩30秒 【メモ】淡麗つけめん1,700円。追い柚子果汁で味変できる。柚子ワインのセットも"], ["SUKE6 DINER", "カフェ・喫茶", "8:00〜18:00（水休）", "¥1,000〜1,999", "朝8時からモーニング。キューバンサンドが好評"], ["珈琲・アモール", "カフェ・喫茶", "9:00〜21:00", "¥1,000〜1,999", "1927年築のスパニッシュ様式の建物。ステンドグラスが印象的。モーニングあり"], ["柳茶屋", "カフェ・喫茶", "11:00〜20:00、土日10:00〜", "¥1,000〜1,999", "抹茶黒糖ラテ、ほうじ茶ティラミス。外国人客が多い（食べログでは掲載保留中）"], ["江戸肉割烹 さゝや", "すき焼き・牛鍋", "11:00〜22:00", "夜¥5,000〜5,999", "築地の老舗の味を継ぐ。厚切り肉の「特選牛鍋」が看板"], ["江戸前焼肉 岡本", "肉料理", "11:15〜23:00、土日祝11:00〜（無休）", "昼¥1,000〜1,999／夜¥5,000〜5,999", "名物は牛炙り大トロ握り。すし屋風の和の内装。アド街で紹介された"], ["たん鬼", "肉料理", "平日17:00〜23:00、土日祝は12時から（中休みあり）、日曜は〜22:00（月休？要確認）", "昼¥1,000〜1,999／夜¥8,000〜9,999", "店頭のセラーで熟成させた「熟成タン」が看板"], ["今半", "すき焼き・牛鍋", "11:30〜21:30", "昼¥4,000〜4,999／夜¥15,000〜19,999", "すき焼き百名店。ランチの百年牛丼が人気"], ["寅鈴", "居酒屋・バー", "11:30〜23:00", "夜¥4,000〜4,999", "名物は創作野菜串。日本酒50種以上。昼飲みもできる"], ["神谷バー", "居酒屋・バー", "11:00〜20:00（火休）", "夜¥2,000〜2,999", "日本最古のバーといわれる。名物はデンキブラン。かにコロッケも人気 【メモ】1階はバー、2階はレストラン。カツカレーもある"], ["大宮", "洋食", "11:30〜14:00／17:30〜20:30、土日祝は夜17:00〜（月休）", "夜¥2,000〜2,999", "浅草を代表する老舗洋食。濃厚なデミグラスのハンバーグ、ビーフシチュー"], ["LUXE BURGERS（ハンバーガー）", "洋食", "11:00〜20:30、土日祝〜20:00（月休）", "¥1,000〜2,999", "フレンチ出身シェフのビストロ風バーガー。チェダーチーズバーガーが人気"], ["モンブラン", "洋食", "11:00〜21:30（水休）", "夜¥2,000〜2,999", "国産牛100%の手ごねハンバーグ。ソースを6種から選べる 【メモ】1979年創業。ハンバーグランチ和風ソース1,350円"], ["鶴次郎", "もんじゃ", "11:30〜15:00／17:00〜22:00、土日祝は通し営業（水休）", "昼¥1,000〜1,999／夜¥2,000〜2,999", "一番人気は「焦がし明太子もちチーズ玉」。3日煮込んだ鶏だしを使う"], ["つくし", "もんじゃ", "11:00〜23:00、土日〜23:30（火休）", "昼¥1,000〜1,999／夜¥2,000〜2,999", "1967年開業。ビートたけしが通った店でサインあり。スペシャルもんじゃ「超特急」、とん平焼き"], ["六文銭 本店", "もんじゃ", "平日11:00〜22:00、土日11:00〜21:30", "夜¥2,000〜2,999", "1999年に生まれた「元祖カマンベールもんじゃ」。テレビでも紹介。たぬき通りにある本店"], ["六文銭 支店", "もんじゃ", "平日16:30〜22:00、土日11:30〜22:00", "夜¥2,000〜2,999", "1999年に生まれた「元祖カマンベールもんじゃ」。テレビでも紹介。食通街にある支店"], ["もきち", "もんじゃ", "10:45〜22:00、土日祝10:30〜23:00", "夜¥2,000〜2,999", "かつおだしの効いたもんじゃ。花やしきの向かい"], ["加藤", "もんじゃ", "10:45〜23:00、土日祝10:30〜（無休）", "夜¥2,000〜2,999", "2024年開店。もへじ創業者らが手がける。土手を作らない浅草式で、スタッフが焼いてくれる。駄菓子コーナーあり"], ["天彩", "天ぷら・天丼", "11:30〜14:30／17:30〜21:00", "昼¥1,000〜1,999／夜¥4,000〜4,999", "具だくさんの「メガ天丼」。雷門近くの隠れ家 【メモ】俥夫天丼1,000円（俥夫限定）。卵の天ぷらがおすすめ。平日も行列"], ["天麩羅 秋光 浅草本店", "天ぷら・天丼", "10:30〜21:30（L.O.21:00）／無休", "昼¥1,000〜1,999／夜¥3,000〜3,999", "花やしきの隣、ひさご通りの入口にある天丼屋。名物は大きな穴子や海老がのった「五代目天丼」（3,300円）。1日5食限定の「五代目天丼 極」（7,200円）はシェアOKの特大サイズ。店主の谷原秋光さんは18歳で老舗の天ぷら屋にバイトで入り、五代目を継いだあと2015年に浅草で独立した人。大鍋で揚げるところをカウンターから見られる。2階は静かで落ち着いている。英語メニューあり、テラス席は喫煙可。"], ["天麩羅バル 秋光 浅草店", "天ぷら・天丼", "月〜金11:30〜16:45／17:00〜23:00、土11:00〜23:00、日祝11:00〜22:00／無休", "昼¥1,000〜1,999／夜¥2,000〜2,999", "本店の姉妹店で、2018年オープンの天ぷら居酒屋。古民家風の店内で、1階カウンターは立ち飲みスタイル。天ぷらと一緒にワインや日本酒が楽しめる。昼は天丼（1,000円〜）がお手頃で、500円のミニ天丼や天茶漬けもある。煮穴子やローストビーフなど居酒屋メニューも多い。飲み放題あり。浅草駅から徒歩5〜6分。"], ["大黒屋", "天ぷら・天丼", "11:00〜20:00", "夜¥2,000〜2,999", "1887年創業。タレがしみた「黒い天丼」が名物。伝法院通り"], ["寿司若", "寿司", "11:00〜翌2:00", "夜¥6,000〜7,999", "本マグロが自慢。深夜まで開いている 【メモ】ランチの8貫にぎりセット（茶碗蒸し・味噌汁付き）。ネタが厚い"], ["紀文寿司", "寿司", "12:00〜14:00／17:00〜21:00、日〜19:00（水休）", "昼¥3,000〜3,999", "1903年創業の老舗江戸前。食べログ百名店"], ["小柳", "うなぎ・どじょう", "11:30〜14:00／16:00〜20:00、日は通し営業（木休）", "¥4,000〜5,999", "公会堂横の老舗。うな重の松が4,070円で浅草では手頃。現金のみ"], ["駒形どぜう", "うなぎ・どじょう", "11:00〜20:00（不定休）", "夜¥4,000〜4,999", "1801年創業。どぜうなべ（1,850円）を卓上の炭火で温めながら食べる"], ["捕鯨船", "定食・和食", "16:00〜22:00、土日15:00〜21:00（木休）", "夜¥3,000〜3,999", "ビートたけしの「浅草キッド」に出てくる店。壁一面にサイン。予約不可・現金のみ"], ["水口食堂", "定食・和食", "10:00〜20:30（水休）", "¥1,000〜1,999", "昭和の大衆食堂。生アジフライが人気。演芸ホールの近くで芸人も来る。現金のみ"], ["尾張屋 本店（そば・天丼）", "そば・うどん", "11:30〜20:00、木〜16:00（金休）", "夜¥3,000〜3,999", "1860年創業。雷門通り。車海老の上天ぷらそば、天丼が名物。作家の永井荷風が通った。現金のみ 【メモ】冷やし山菜そば（山菜・なめこ・おかか）も人気"], ["葵丸進", "天ぷら・天丼", "11:00〜21:00（月・祝休との記載あり、要確認）", "昼¥2,000〜2,999／夜¥5,000〜5,999", "雷門通りの老舗。衣たっぷりの天ぷらと、甘辛いつゆの天丼 【メモ】雷門から徒歩1分。夏は冷やしうどん定食（天ぷらを天丼に変更可）。生姜の天ぷらがおすすめ。エレベーターあり"], ["天麩羅 中清", "天ぷら・天丼", "11:30〜14:00／17:00〜21:00、土日祝11:30〜20:00（火・水休）", "夜¥5,000〜5,999", "明治3年創業。屋台から始まった江戸前天ぷら。ごま油で揚げる。名物は雷神揚げ丼"], ["米久本店（牛鍋）", "すき焼き・牛鍋", "12:00〜21:00（水休）", "¥4,000〜7,999", "お客さんが入ると太鼓で迎える老舗の牛鍋屋。すき焼き百名店。通し営業。現金のみ"], ["ヨシカミ", "洋食", "11:30〜21:30（木休）", "¥2,000〜3,999", "1951年開店。「うますぎて申し訳ないス！」の看板。ビーフシチューが名物の洋食百名店。予約不可 【メモ】ビーフシチュー3,400円"], ["浅草むぎとろ 本店（麦とろ・定食）", "定食・和食", "平日11:00〜16:00／17:00〜22:30、土祝11:00〜22:30、日〜21:00（無休）", "夜¥6,000〜7,999（口コミでは¥3,000台）", "昭和4年創業。隅田川沿い。平日ランチは「むぎとろバイキング」、土日祝は屋上で「天空とろろビュッフェ」"], ["駒形前川（うなぎ）", "うなぎ・どじょう", "11:30〜21:00", "昼¥6,000〜7,999／夜¥10,000〜14,999", "江戸時代創業。隅田川とスカイツリーが見える。池波正太郎が通った。16時以降はサービス料10%"], ["弁天山美家古寿司", "寿司", "12:00〜14:30／17:00〜21:00、日祝12:00〜18:00（月休、第1・3日曜休）", "夜¥10,000〜14,999", "1866年創業。漬けや煮蛤など、昔ながらの仕事をした江戸前寿司。寿司百名店"], ["釜めし むつみ（釜飯）", "定食・和食", "11:30〜14:30／17:15〜22:00（水休、隔週で火休）", "¥3,000〜7,999", "1968年創業。注文してから炊くので40〜60分かかる。五目釜めしが人気。ネット予約可"], ["徳仙（天ぷら）", "天ぷら・天丼", "11:40〜20:30（水休。隔週で木休という記載もあり）", "昼¥1,000〜1,999／夜¥3,000〜3,999", "1898年創業といわれる老舗。天ぷらをつゆにくぐらせる天丼で、大きな穴子天丼が人気。カウンター席があり地元の人が多い。現金のみ・喫煙可"], ["とん久（とんかつ）", "肉料理", "11:00〜17:45（木休）", "¥1,000〜1,999", "雷門から徒歩10秒。ロースカツ定食1,250円は衣が軽くサクッ。生姜焼きやハヤシライスもある。家族経営で接客が温かい"], ["とんかつ じゅうろく（とんかつ）", "肉料理", "11:30〜14:30／18:00〜20:30、金土は〜21:00（月休）", "¥2,000〜3,999", "田原町、楽屋の斜め向かい。低温調理のヒレカツ定食2,600円。醤油ソース・柚子胡椒・藻塩・からしで味変できる。羽釜炊きご飯とだし巻き卵も好評。10席の古民家風"], ["浅草聚楽（洋食）", "洋食", "平日11:30〜20:00、土日11:00〜20:00", "¥1,000〜2,999", "雷門から徒歩6分、もうすぐ創業100年のレトロなファミレス。味噌カツと冷やしうどんのセット1,800円。オムカツカレーや大人のお子様ランチもある"], ["ぱいち（洋食）", "洋食", "11:30〜14:00／17:00〜20:00（日休）", "昼¥1,000〜1,999／夜¥2,000〜2,999", "食通街。名物は4日間煮込むビーフシチューで、鉄鍋で出てくるので冷めにくい。カツカレー1,600円、限定ランチのロースカツ定食も。芸能人の常連もいる"], ["リスボン（洋食）", "洋食", "11:00〜14:30／17:00〜19:30（火休）", "¥1,000〜1,999", "1932年（昭和7年）創業で、池波正太郎も通った店。演芸ホールからすしや通り方面へ徒歩1分。カツカレー1,600円、オムライスも人気。現金のみ"], ["幸せのビーフカレー（もう〜とりこ）（カレー）", "洋食", "平日11:00〜23:00、土日祝9:00〜23:00", "¥1,000〜1,999", "吉野家の新業態で、2024年12月に浅草で1号店が開店。牛丼と同じ牛肉を使ったビーフカレーと、スパイスカレーから選べる。ご飯の量と辛さも選べる。カレースパゲッティは麺少なめなので大盛り推奨。常連向けに100円引き券あり"], ["Vegan Eat Tokyo（ヴィーガン）", "洋食", "11:45〜15:00／17:00〜21:45（不定休）", "昼¥2,000〜2,999／夜¥3,000〜3,999", "たぬき通りの端。フレンチシェフ監修のヴィーガン料理。蓮根ハンバーグランチ2,500円、人気No.1は車麩カツレツ。グルテンフリーやアレルギーにも対応していて、海外のお客様に紹介しやすい"], ["甲州屋（そば）", "そば・うどん", "11:30〜19:15頃（火休）", "¥1,000〜1,999", "ひさご通り、花やしき入口の近く。カツ丼ともりそばのセット1,200円はボリューム満点で、カツ丼も美味しい"], ["雷門 満留賀（そば）", "そば・うどん", "11:00〜19:00（火休。第1・3水休という記載もあり）", "¥1,000〜1,999", "観音通り、レーンから徒歩10秒。細めでコシのあるそばで、提供が早い。ざるそば880円、親子なんばん1,200円（税抜）。深川せいろも人気"], ["文殊 浅草店（立ち食いそば）", "そば・うどん", "平日6:00〜23:00、土日祝7:00〜21:00", "〜¥999", "浅草地下街の立ち食いそば。かき揚げそば500円前後で、安くて早くて美味しい。ラジオが流れる昭和の雰囲気。朝6時から開いている。現金のみ"], ["佐藤養助 浅草店（稲庭うどん）", "そば・うどん", "11:00〜18:00（木休）", "¥1,000〜1,999", "雷門から徒歩2〜3分、秋田の稲庭うどんの名店。細麺なのにコシがしっかり。かしわご飯とうどんのセットが人気。17席で混みやすい"], ["叶屋（うどん）", "そば・うどん", "10:50〜19:00、土日祝は〜19:30（水休）", "¥1,000〜1,999", "伝法院通り、仲見世の近く。うどん百名店。利尻昆布だしの手打ちうどんで、鯛ちくわ温玉ぶっかけが人気。注文してから茹でるので約10分待つ"], ["十和田 すしや通り店（そば・和食）", "そば・うどん", "11:30〜15:30／17:00〜22:00、土日は通し営業（不定休）", "昼¥1,000〜1,999／夜¥4,000〜4,999", "そば、海鮮、天ぷらが楽しめる。ランチのセットがお得で、ネギトロが新鮮。もりそばとミニ海老天丼が定番。個室と座敷あり"], ["玄蕎麦 しんがり 浅草本店（そば）", "そば・うどん", "記載なし（要確認）", "¥2,000〜2,999", "玄蕎麦粉100%の十割そばを、注文ごとに打って茹でる。湯葉刺し770円は大豆の甘みがあって食べ応えあり。タッチパネルで注文。日本酒もそろう"], ["麺処 一龍 浅草本店（ラーメン）", "ラーメン・中華", "11:00〜22:00", "¥1,000〜1,999", "馬道、伝法院通りの少し奥。和牛や牛骨を使ったラーメン。醤油ラーメン1,500円はチャーシューと卵入りで満足感あり。和牛ラーメン2,000円も。牛骨の旨みは醤油か塩のほうが感じやすい。カウンター約10席"], ["ハッスルラーメンホンマ 浅草店（ラーメン）", "ラーメン・中華", "11:00〜14:30／18:00〜23:00", "〜¥999", "背脂の浮く豚骨醤油に、浅草開化楼の太麺。濃厚魚介つけ麺800円（大盛り+100円）で、量は中・大・特盛から選べる。アド街など多くのメディアで紹介。カウンター10席"], ["中華ソバ ビリケン（ラーメン）", "ラーメン・中華", "11:00〜15:00／17:30〜21:00、土日は通し営業", "¥1,000〜1,999", "雷門から徒歩4分。ラーメン百名店2021。鴨と鶏の出汁にちぢれ太麺の手揉み中華ソバ1,100円。柚子とトリュフペーストで味変できる。英語メニューあり"], ["浅草 参食堂（ラーメン）", "ラーメン・中華", "11:00〜19:30", "¥1,000〜1,999", "六区のチケット売り場から奥山おまいりまち方面、右側。生姜の効いた中華そば750円。つけ麺と味玉がおすすめ。店内はアニメのポスターだらけ。※食べログに「リニューアル」の表示あり"], ["浅草タイガー（餃子・ラーメン）", "ラーメン・中華", "平日12:00〜15:30／17:30〜22:30、土日祝11:30〜22:30（無休）", "¥1,000〜2,999", "演芸ホールからすしや通り方面へ徒歩1分。ランチ限定の醤油ラーメンと牛バラ飯（甘辛いすき焼き風）のセット1,200円。手打ち餃子も名物"], ["金太楼鮨 浅草中央店（寿司）", "寿司", "11:30〜22:00、土日11:00〜（月休）", "¥1,000〜1,999", "ねぎとろ巻発祥の店といわれる、創業100年の大衆寿司。ばくだん定食1,100円（税抜）、ランチにぎり990円。ランチは11:30〜13:45"], ["元祖 釜めし春（釜めし）", "定食・和食", "11:00〜21:00（水休）", "¥1,000〜3,999", "大正13年創業。一合釜で炊く釜めしのスタイルを初めて作った「元祖」。あさり釜めし1,850円で、おこげが美味しい。注文から約20分かかる"], ["釜飯と串焼き 麻鳥（釜めし）", "定食・和食", "平日11:00〜21:30、土日祝〜21:00（無休）", "昼¥1,000〜1,999／夜¥4,000〜4,999", "45年続く釜めしと焼き鳥の店。ランチの稲庭うどんセット1,900円。着物の店員さんが接客してくれる。釜めしは約30分かかる。予約可"], ["浅草もんじゃ ぜんや（もんじゃ）", "もんじゃ", "10:30〜23:00", "¥2,000〜2,999", "豊洲から仕入れる海鮮もんじゃ、明太もちもんじゃ（チーズ追加がおすすめ）、ニラが効いた豚ニラ玉もんじゃ。店員さんが焼いてくれる。個室と6人席あり"], ["ローヤルセカンド（居酒屋）", "居酒屋・バー", "平日15:00〜23:00、土12:00〜22:30、日祝12:00〜21:30", "夜¥4,000〜4,999", "ローヤル珈琲店の姉妹店だけど、コーヒーは出ない。名物のいかとんび（イカの口まわり）はつい何本もおかわりしてしまう。黒龍や百年の孤独など、日本酒・焼酎が豊富。チャージあり。現金のみ"], ["雷門 三定（天ぷら）", "天ぷら・天丼", "11:00〜20:30（不定休）", "¥2,000〜3,999", "1837年（天保8年）創業で、雷門の目の前。日本最古の天ぷら屋ともいわれる。どんぶりからはみ出す大きなかき揚げ丼が名物。320席あるので大人数でも入りやすい"], ["まさる（天丼）", "天ぷら・天丼", "11:00〜15:00（水・日休、売り切れ次第終了）", "¥3,000〜3,999", "1947年開業、浅草を代表する高級天丼の店。大入江戸前天丼3,700円。はまぐりの天ぷらもある。16席で行列必至、予約不可"], ["ちんや（すき焼き）", "すき焼き・牛鍋", "平日11:00〜15:00／16:30〜21:30、土日祝11:00〜21:30", "昼¥3,000〜3,999／夜¥10,000〜14,999", "1880年創業、浅草で一番古いすき焼き店。2022年に花川戸へ移転して再開した。すき焼き百名店。完全個室あり。サービス料10%"], ["今半 別館（すき焼き）", "すき焼き・牛鍋", "平日11:00〜15:00／16:30〜20:00、土日11:00〜20:00", "昼¥1,000〜2,999／夜¥15,000〜19,999", "すき焼き百名店。ランチの上肉すき焼きランチや、1日20食限定の大名牛丼なら今半の味を手頃に楽しめる。一軒家で座敷・個室あり。予約不可"], ["うなぎ 色川（うなぎ）", "うなぎ・どじょう", "11:30〜14:00（定休日の記載なし）", "¥4,000〜5,999", "1861年（文久元年）創業の老舗。12席の小さな店で、週末の昼は行列ができる。予約不可"], ["初小川（うなぎ）", "うなぎ・どじょう", "12:00〜13:30／17:00〜20:00（水休）", "¥4,000〜5,999", "1907年創業、うなぎ百名店。鰻重（上）が人気で、3,900〜5,000円ほど。14席で座敷あり。10日前から予約可。現金のみ"], ["すしざんまい 浅草雷門店（寿司）", "寿司", "平日11:00〜22:00、土日祝10:00〜22:00", "昼¥1,000〜1,999／夜¥3,000〜3,999", "雷門から約50m。本まぐろが自慢のおなじみのチェーン。101席で入りやすく、海外のお客様にも分かりやすい"], ["まぐろ人 新仲見世店（寿司）", "寿司", "11:30〜22:00（無休）", "¥2,000〜4,999", "回転寿司で人気の「まぐろ人」の、回らない店。ネタは常時50種類以上で、本鮪を使っていてコスパが良い。英語メニューあり"], ["鮓 かね庄（寿司）", "寿司", "11:30〜14:00／17:00〜22:00（月休。第1・3日曜休という記載もあり）", "昼¥2,000〜2,999／夜¥10,000〜14,999", "カウンター9席の本格江戸前寿司。寝かせた魚と米酢のシャリが評判。ランチなら手頃に味わえる。予約可"], ["グリル グランド（洋食）", "洋食", "11:30〜14:00／17:00〜21:00（月・日休）", "昼¥3,000〜3,999／夜¥10,000〜14,999", "1941年創業、浅草寺の裏にある一軒家の洋食店。洋食百名店。ビーフカツ、車エビフライ、特製オムライスが人気。少し高めの、ご褒美の洋食"], ["薬膳カレー&スープカレー らいもん（カレー）", "洋食", "12:00〜14:30／17:30〜22:00（火休、不定休あり）", "¥1,000〜1,999", "田原町。薬膳カレーなのに本格的な欧風カレーと評判。なすチーズカレー、骨付きラムカレー、あさりカレーが人気。食券制"], ["本とさや（焼肉）", "肉料理", "12:00〜15:00／17:00〜23:00（12/31のみ休み）", "夜¥5,000〜5,999", "1981年開業の老舗焼肉店で、焼肉百名店の常連。上タン塩、上カルビ、上ハラミが人気。110席、座敷・掘りごたつあり"], ["浅草 牛かつ（牛カツ）", "肉料理", "11:00〜22:00", "¥1,000〜2,999", "雷門の目の前にある、行列のできる牛かつ専門店。とろろ付きの牛かつ定食にドリンクが付くセットで1,710円。麦ご飯のおかわり無料。予約不可"], ["馬賊 浅草店（ラーメン）", "ラーメン・中華", "11:15〜20:30（月休）", "¥1,000〜1,999", "厨房で作る手打ち麺が名物で、作っている様子が見られる。夏は馬賊冷やし中華が人気。担々麺や餃子も。現金のみ"], ["喜多方ラーメン 坂内 浅草店（ラーメン）", "ラーメン・中華", "11:00〜22:00（月休）", "¥1,000〜1,999", "雷門2丁目、駒形方面。喜多方の老舗「坂内食堂」の味を受け継ぐ。もちもちの手揉み麺と、チャーシューたっぷりの焼豚ラーメン。青唐ねぎ塩ラーメンも人気。海外のお客様も多い"], ["麺 みつヰ（ラーメン）", "ラーメン・中華", "火〜金11:00〜14:30／18:00〜20:00、土11:00〜16:00（日・月休）", "¥1,000〜1,999", "田原町、ラーメン百名店。生姜の香る醤油ラーメンと手揉み麺。整理券制で、午前の部は10時、午後の部は17時半ごろから配る。1日6食限定のチャーシュー丼も"], ["自家製麺 うるち（ラーメン）", "ラーメン・中華", "11:00〜15:00／18:00〜23:00", "¥1,000〜1,999", "田原町、2023年開店。特製東京醤油ラーメン1,450円。店主は荻窪「春木屋」出身。TRYラーメン大賞の新店部門・つけ麺部門で2位だったという口コミあり。13席・現金のみ"], ["来集軒（ラーメン）", "ラーメン・中華", "12:00〜18:00（火休、売り切れ次第終了）", "〜¥999", "1950年開業の昭和の町中華。シンプルな醤油ラーメン、ワンタン麺、シューマイ。テレビ番組「マツコの知らない世界」でも紹介された"], ["浅草 ときわ食堂（食堂）", "定食・和食", "平日9:00〜22:00、土日祝8:30〜22:00（水休）", "¥1,000〜1,999", "雷門の2軒隣。魚料理が自慢の大衆食堂で、焼き魚の定食が人気。朝から開いていて、朝飲みもできる"], ["ミソジュウ（味噌汁）", "定食・和食", "8:00〜16:00（時短営業中の表示あり）", "¥1,000〜1,999", "味噌汁が主役の店。有機野菜たっぷりのとん汁セット1,980円。朝は味噌汁・おにぎり・煮卵のモーニングセット850円。テイクアウトも可。海外のお客様に人気"], ["Asari111（ダイニングバー）", "居酒屋・バー", "火〜金11:15〜14:00／17:00〜22:00、土11:15〜22:00、日祝17:00〜22:00（月休）", "昼¥1,000〜1,999／夜¥4,000〜5,999", "三浦・三崎から朝獲れの魚を直送。馬刺しなどの肉料理もある。国産クラフトジンが20種類以上。テラス席は最大10名。飲み放題付きコース5,000円〜"], ["浅草酒場 岡本 ホッピー通り店（居酒屋）", "居酒屋・バー", "月〜土11:00〜23:00、日〜22:30", "¥2,000〜3,999", "ホッピー通りの昼飲みの定番。名物は元祖牛すじもつ煮込み。ホッピーや電気ブランのドリンクも。100席でテラス席あり。喫煙可"], ["大衆酒場 大桝（居酒屋）", "居酒屋・バー", "11:30〜24:00、金土祝前日は〜翌1:00（水休。第1・3火曜休という記載もあり）", "昼¥1,000〜1,999／夜¥3,000〜3,999", "自家製の街中華でビールを楽しむ酒場。ジビエ餃子、四川風麻婆豆腐。ピルスナーウルケルやギネスなど樽生ビールが豊富"], ["浅草サンボア（バー）", "居酒屋・バー", "14:00〜23:00（水休）", "¥2,000〜2,999", "100年以上続くバー「サンボア」の流れをくむ老舗で、バー百名店。名物はハイボール。昼の2時から飲める。喫煙可"], ["牡蠣屋 浅草 惚のじ（オイスターバー）", "居酒屋・バー", "平日14:00〜22:00、土日12:00〜22:00（火休）", "¥4,000〜5,999", "雷門の近く。全国から仕入れた牡蠣を、生・フライ・天ぷら・蒸し・鍋で楽しめる。生牡蠣は2回の検査に合格したものだけ。日本酒は希少な銘柄もある"], ["KIELO COFFEE ASAKUSA（カフェ）", "カフェ・喫茶", "9:00〜19:00", "¥1,000〜1,999", "雷門2丁目、2025年8月オープン。「北欧ダイニング×日本の高級旅館」がコンセプトの店内。カフェラテ800円、自家製抹茶チーズケーキやキャロットケーキ。休日は注文まで20分待つことも"], ["フルーツパーラーゴトー（フルーツパーラー）", "カフェ・喫茶", "11:00〜19:00（水・木休）", "¥1,000〜2,999", "スイーツ百名店の常連。旬の果物（白桃・梨・柿・無花果など）をぜいたくに使ったパフェが名物。20席で行列あり。現金のみ"], ["珈琲 天国（喫茶店）", "カフェ・喫茶", "12:00〜18:30（火休）", "¥1,000〜1,999", "喫茶店百名店。「天国」の焼き印が入った昔ながらのホットケーキが名物。15席の小さな店で、テイクアウト可。現金のみ"], ["ローヤル珈琲店 本店（喫茶店）", "カフェ・喫茶", "8:00〜20:00", "〜¥1,999", "昭和から続く喫茶店百名店。朝8時からモーニングがあり、あんこバターのホットサンドが人気。60席で入りやすい。居酒屋のローヤルセカンドは姉妹店。現金のみ"], ["ロッジ赤石（喫茶店）", "カフェ・喫茶", "9:00〜19:00（月休）", "¥1,000〜1,999", "1973年開業、喫茶店百名店。エビサンド、ナポリタン、モーニングのホットドッグが人気。店内での人物の撮影は禁止"], ["フグレン ASAKUSA（カフェ）", "カフェ・喫茶", "月〜木8:00〜21:00、金〜日8:00〜23:00", "〜¥1,999", "ノルウェー発のカフェ。北欧のビンテージ家具に囲まれた店内で、浅煎りのコーヒーとノルウェーワッフル。夜はバーにもなる。ホッピー通りの近く"], ["浅草もんじゃ もんろう（もんじゃ）", "もんじゃ", "11:00〜23:00", "¥2,000〜2,999", "豊洲直送の海鮮もんじゃや、熟成ゴーダのチーズもんじゃ。1階ではスタッフの鉄板パフォーマンスが見られる。2・3階は団体で貸切可。お通し440円・ワンドリンク制"]];
+const WALK=[["浅草メンチ（メンチカツ）", "揚げ物", "10:00〜19:00", "〜¥999", "注文後に揚げる、肉汁たっぷりのメンチカツ。休日は行列"], ["アリランホットドッグ（ハットグ）", "揚げ物", "10:00〜20:00", "〜¥999", "揚げたてのチーズハットグ。2階にイートインあり。現金のみ"], ["AGE 3（揚げサンド）", "揚げ物", "11:00〜19:00", "¥1,000〜1,999", "テイクアウト専門の揚げサンド。メロンなどスイーツ系もある"], ["浅草安心や（台湾唐揚げ）", "揚げ物", "10:00〜16:30（無休、売り切れ次第終了）", "〜¥999", "薄くて大きい台湾唐揚げ「炸鶏排（ザージーパイ）」"], ["もんじゃころっけ（コロッケ）", "揚げ物", "11:00〜17:00（水休、売り切れ次第終了）", "〜¥999", "もんじゃ焼きをコロッケにした名物（プレーン400円）"], ["アイスの沼（ジェラート）", "スイーツ", "10:00〜17:00、土日祝〜18:00", "〜¥999", "ジェラートが40種類以上。電気ブラン味もある"], ["たばねのし（抹茶クレープ）", "スイーツ", "11:00〜18:00、土日祝10:00〜19:00", "¥1,000〜1,999", "掛川抹茶を使った、もちもち生地のクレープ"], ["あんなのクレープ", "スイーツ", "火〜木13:00〜18:00、金〜日14:00〜22:00（月休）", "¥1,000〜1,999", "黒毛和牛の「すき焼きクレープ」など食事系もある。待ち時間に10秒チャレンジがある"], ["ミルクの木（シュークリーム）", "スイーツ", "11:00〜20:00（水休）", "〜¥999", "シュークリーム（280円）や焼き菓子が人気"], ["茶工房ふたつめ（抹茶スイーツ）", "スイーツ", "11:00〜19:00（月休）", "¥1,000〜1,999", "目の前で絞る和栗の抹茶モンブラン"], ["祇園京くらら（生麩の和菓子）", "和菓子", "10:00〜19:00", "〜¥999", "京生麩の串（チーズ麩カツ、あまおう苺あんなど）。3本まとめて買うと少し安い"], ["木村屋人形焼（人形焼）", "和菓子", "9:30〜18:00", "〜¥999", "1912年創業の「元祖」。あん入り8個600円。近くに別の店の「木村家本店」もある"], ["なると鯛焼き（たい焼き）", "和菓子", "9:00〜23:00", "〜¥999", "一丁ずつ直火で焼く「天然たい焼き」。芋あんが人気"], ["芋やす（焼き芋）", "和菓子", "12:00〜18:00（月休）", "〜¥999", "紅はるかなどの焼き芋とソフトクリーム。花やしき前"], ["満貫堂（芋きん）", "和菓子", "9:30〜17:30、土日祝9:00〜18:00", "〜¥999", "名物は芋きん。浅草限定の芋くりパイもある。持ち帰りのみ"], ["おれんじーる（オレンジジュース）", "ドリンク", "10:00〜18:00、土日〜19:00", "〜¥999", "注文を受けてから丸ごと搾るオレンジ（800円）、オレンジモンブラン"], ["花月堂（メロンパン）", "スイーツ", "10:00〜売り切れまで（無休）", "〜¥999", "名物はジャンボめろんぱん（300円）"], ["浅草きびだんご あづま（きびだんご）", "和菓子", "9:30〜19:00（無休）", "〜¥999", "きなこたっぷりの作りたてきびだんご。甘酒や冷やし抹茶と一緒に。現金のみ"], ["浅草 九重（揚げまんじゅう）", "和菓子", "9:30〜19:00", "〜¥999", "仲見世の揚げまんじゅう。カレー味や揚げもんじゃチーズもある。いつも観光客でにぎわう"], ["浅草ちょうちんもなか（アイス最中）", "和菓子", "10:00〜17:30（不定休、売り切れ次第終了）", "〜¥999", "仲見世にある、ちょうちんの形のアイス最中。抹茶・黒ごま・あずきなど。現金のみ"], ["舟和 本店（芋ようかん）", "和菓子", "10:00〜19:00（無休）", "¥1,000〜1,999", "浅草名物の芋ようかん、あんこ玉。芋ようかんソフトもある。2・3階は喫茶室で、みつ豆ホール発祥の地 【メモ】芋ようかんは保存料・着色料・香料不使用で、1本から買える"], ["梅園 浅草本店（甘味処）", "和菓子", "10:00〜17:00、土日祝〜18:00（月2回水休）", "〜¥999", "1854年創業。名物はあわぜんざい。わらび餅、あんみつ、豆大福もある。現金のみ"], ["亀十（どら焼き）", "和菓子", "10:00〜19:00（不定休）", "〜¥999", "東京三大どら焼きの一つ。ふわふわの皮で、黒あんと白あんがある。行列ができる。持ち帰りのみ・現金のみ"], ["浅草浪花家（たい焼き・かき氷）", "和菓子", "月木金11:00〜19:00、火水土日10:00〜18:00", "¥1,000〜1,999", "「およげ！たいやきくん」のモデルになった麻布十番・浪花家総本店ののれん分け。一丁焼きの薄皮たい焼き。かき氷もある"], ["千葉屋（大学いも）", "和菓子", "10:00〜18:00、日〜17:00（月・火休）", "〜¥999", "1950年開業。大ぶりで蜜たっぷりの大学いも（400g 920円）。甘味の百名店。持ち帰りのみ・現金のみ"], ["壽々喜園（抹茶ジェラート）", "スイーツ", "11:00〜17:00（不定休）", "〜¥999", "「世界一濃い」抹茶ジェラート。濃さを7段階から選べる。アイス百名店。2階にイートインあり"], ["梅むら（甘味処）", "和菓子", "12:30〜19:00（日休）", "〜¥999", "「豆かん」発祥の店といわれる、1968年創業の甘味処。和菓子・甘味処百名店。豆かん500円。テイクアウト可・現金のみ"], ["徳太樓（和菓子）", "和菓子", "10:00〜17:00（日休）", "〜¥999", "1903年創業。名物はきんつば。和菓子・甘味処百名店"], ["浅草よ兵衛（団子）", "和菓子", "10:00〜18:00（無休、荒天時は休み）", "〜¥999", "焼きたての団子とお餅の店。団子は5種類あり、「あったかまいう餅」が人気。イートインもできる"], ["木村家本店（人形焼）", "和菓子", "10:00〜18:00", "〜¥999", "1868年（明治元年）創業、浅草で一番古い人形焼の店といわれる。仲見世の「元祖木村家人形焼本舗」とは別の店。カード不可"], ["亀屋（人形焼）", "和菓子", "記載なし（要確認）", "〜¥999", "職人が手作りする人形焼と手焼きせんべいの店。あん入り人形焼6個600円。テイクアウトのみ"], ["喜久屋（団子・大福）", "和菓子", "10:30〜17:30（月・火休、売り切れ次第終了）", "〜¥999", "仲見世の近く。みたらし団子、よもぎ団子、豆大福。現金のみ"], ["甘味処 西山（和菓子）", "和菓子", "12:00〜18:00、土日祝〜19:00（水休、祝日は営業）", "〜¥1,999", "1852年創業。銀座線2番出口のすぐ近く。浅草名物の「福々まんじゅう」。夏は宇治金時のかき氷があり、食べ歩き用もある"], ["雷一茶 浅草本店（抹茶スイーツ）", "スイーツ", "10:00〜17:00", "〜¥999", "「良質な抹茶は苦くない」がコンセプトの抹茶専門店。抹茶ソフト、抹茶ラテ、ほうじ茶ソフト。くまの形の抹茶ソフトが写真映えする。テイクアウト可"], ["淺草シルクプリン（プリン）", "スイーツ", "10:00〜21:00", "〜¥999", "瓶入りのなめらかプリンの店で、種類が多い。プレミアムシルクプリン690円、季節限定もある。お土産にも人気。夜9時まで開いている"], ["伊太利亜のじぇらぁとや（ジェラート）", "スイーツ", "11:00〜20:00（木休、月2回水休）", "〜¥999", "1988年創業、アイス・ジェラート百名店。日本の素材で作るジェラートが毎日24種類。3種盛り900円、3色団子パフェ750円"], ["栃木家（豆腐スイーツ）", "スイーツ", "月〜木11:30〜19:00、金土〜18:30（日休）", "〜¥999", "テイクアウトの豆腐専門店。豆乳スイーツのほか、とうふ豚まん400円も。店先に3席"], ["浅草さくら（メロンパン）", "スイーツ", "10:00〜17:00", "〜¥999", "花月堂系の、プレミアムめろんぱんの店。外はサクッ、中はふんわりで、約300円。アイス入りのアイスめろんぱんもある。現金のみ"], ["浅草そらつき 裏仲店（いちご和スイーツ）", "スイーツ", "10:00〜18:00（無休）", "〜¥999", "カラフルなフレーバー餡といちごの「いちご団子」が看板。写真映えする食べ歩きスイーツ。いちごスムージーもある。テイクアウト専門・現金のみ"], ["寿清庵 浅草ロック通り店（クレープ）", "スイーツ", "11:00〜17:00", "〜¥1,999", "六区通り沿い、2025年3月オープン。グルテンフリーのもちもち抹茶クレープ。定番はシュガーバター850円〜、期間限定の抹茶生チョコもちクレープ1,200円。行列で有名な寿清庵の2号店"], ["浅草苺座（苺ドリンク）", "ドリンク", "11:00〜18:00（不定休）", "〜¥999", "苺スムージーのほか、苺ビールや苺テキーラも。大福いちご、かんざし苺などの苺スイーツもある"], ["ジューススタンド リニュー（ジュース）", "ドリンク", "10:00〜20:00（松屋浅草の営業に準じる）", "〜¥999", "松屋浅草の地下1階。バナナジュース310円など、手頃な生ジュースとソフトクリーム。駅直結で寄りやすい"], ["浅草うなな（うなぎ）", "軽食", "平日9:00〜17:30／土日祝9:00〜18:30／無休", "〜¥999（焼きおにぎり 630円）／うな重 ¥1,390〜2,790", "国産うなぎの焼きおにぎりの店で、「焼きおにぎり発祥の店」を名乗っている。おにぎりの上にうなぎがドーンとのって630円。うなぎは全部国産で、蒸してから備長炭で焼く関東風。焼き上がりまで約7分で、外はカリカリ、中はふわふわ。うな重（梅1,390円〜）や蒲焼もあって、うなぎとしてはかなり安い。うな肝串（500円）にも根強いファンがいる。2020年オープン。土日は整理券制で、2〜3時間待ちになる日もあるという口コミがある。『櫻井・有吉THE夜会』で中島健人が来店した。場所は花やしきの近く、初音小路の中（浅草2-7-21）で、TX浅草駅から徒歩3分。 【メモ】西参道と花やしき通りの間。券売機で注文、山椒ありがおすすめ"]];
+
+const FUKU=[["浅草寺","大黒天"],["浅草神社","恵比寿"],["矢先稲荷神社","福禄寿"],["鷲神社","寿老人"],["吉原神社","弁財天"],["石浜神社","寿老神"],["橋場不動尊","布袋尊"],["今戸神社","福禄寿"],["待乳山聖天","毘沙門天"]];
+const FUKU1=FUKU.map(([p,g])=>[p+"の七福神は？",g]);
+const byGod={};FUKU.forEach(([p,g])=>{(byGod[g]=byGod[g]||[]).push(p);});
+const FUKU2=Object.keys(byGod).map(g=>["七福神「"+g+"」の寺社は？",byGod[g].join("・")]);
+
+// [名前, 始まり, 創建者, 3番目の問いの名称, その答え, 御利益, 特徴, 七福神]
+const FIVE_SRC=[
+["浅草寺","628年3月18日未明","土師真中知（はじのまなかち）・檜前浜成・檜前竹成","ご本尊","聖観世音菩薩","施無畏（せむい）、恐怖心・不安などを取り除く","都内最大","大黒天"],
+["浅草神社","不明","土師真中知の子孫","御祭神","三社権現（徳川家康）","商売繁盛","国重要文化財","恵比寿"],
+["待乳山聖天","595年9月20日","慈覚大師","ご本尊","大聖歓喜天像","心願成就","都内最古","毘沙門天"],
+["今戸神社","1063年","源頼義・義家","御祭神","応神天皇・イザナミノミコト・イザナギノミコト","縁結び","関東一の縁結び","福禄寿"],
+["牛嶋神社","860年","慈覚大師","御祭神","スサノオノミコト","心身療養","撫で牛・三輪鳥居","なし"]];
+const FIVE=[];
+FIVE_SRC.forEach(t=>{const n=t[0];
+ FIVE.push([n+"の一番最初の始まり（〜年〜月〜日）は？",t[1]],[n+"を創建した人は？",t[2]],[n+"の"+t[3]+"は？",t[4]],[n+"の御利益は？",t[5]],[n+"の特徴は？",t[6]],[n+"の七福神は？",t[7]]);});
+
+const RICE_GENRES=["もんじゃ","天ぷら・天丼","すき焼き・牛鍋","うなぎ・どじょう","そば・うどん","寿司","洋食","肉料理","ラーメン・中華","定食・和食","居酒屋・バー","カフェ・喫茶"];
+const WALK_GENRES=["和菓子","スイーツ","揚げ物","ドリンク","軽食"];
+const GOURMET={rice:{name:'ご飯屋さん',genres:RICE_GENRES,shops:RICE.map(([n,g,h,p,d])=>({n,g,h,p,d}))},walk:{name:'食べ歩き',genres:WALK_GENRES,shops:WALK.map(([n,g,h,p,d])=>({n,g,h,p,d}))}};
+
+const LINES=[
+{n:"都営浅草線",r:"羽田から成田まで<br>羽田空港 → 成田空港",st:[["#","京急線"],["","羽田空港第1・第2ターミナル"],["","羽田空港第3ターミナル"],["","天空橋"],["","穴守稲荷"],["","大鳥居"],["","糀谷"],["","京急蒲田"],["","雑色"],["","六郷土手"],["","京急川崎"],["","八丁畷"],["","鶴見市場"],["","京急鶴見"],["","花月総持寺"],["","生麦"],["","京急新子安"],["","子安"],["","神奈川新町"],["","京急東神奈川"],["","神奈川"],["","新馬場"],["","北品川"],["","品川"],["","泉岳寺"],["#","都営浅草線"],["","泉岳寺"],["","三田"],["","大門"],["","新橋"],["","東銀座"],["","宝町"],["","日本橋"],["","人形町"],["","東日本橋"],["","浅草橋"],["","蔵前"],["","浅草"],["","本所吾妻橋"],["","押上"],["#","京成線・成田空港方面"],["","押上"],["","青砥"],["","京成高砂"],["","新柴又"],["~","矢切方面（北総線経由）"],["","東松戸"],["","新鎌ヶ谷"],["","千葉ニュータウン中央"],["","印旛日本医大"],["","成田湯川"],["","空港第2ビル"],["","成田空港"]]},
+{n:"銀座線",r:"浅草から渋谷まで",st:"G19 浅草,G18 田原町,G17 稲荷町,G16 上野,G15 上野広小路,G14 末広町,G13 神田,G12 三越前,G11 日本橋,G10 京橋,G09 銀座,G08 新橋,G07 虎ノ門,G06 溜池山王,G05 赤坂見附,G04 青山一丁目,G03 外苑前,G02 表参道,G01 渋谷".split(',').map(s=>s.split(' '))},
+{n:"東武線",r:"浅草から伊勢崎まで<br>浅草 → 伊勢崎",st:[["","浅草"],["","とうきょうスカイツリー"],["","曳舟"],["","東向島"],["","鐘ケ淵"],["","堀切"],["","牛田"],["","北千住"],["","小菅"],["","五反野"],["","梅島"],["","西新井"],["","竹ノ塚"],["","谷塚"],["","草加"],["","獨協大学前〈草加松原〉"],["","新田"],["","蒲生"],["","新越谷"],["","越谷"],["","北越谷"],["","大袋"],["","せんげん台"],["","武里"],["","一ノ割"],["","春日部"],["","北春日部"],["","姫宮"],["","東武動物公園"],["","和戸"],["","久喜"],["","鷲宮"],["","花崎"],["","加須"],["","南羽生"],["","羽生"],["","川俣"],["","茂林寺前"],["","館林"],["","多々良"],["","県"],["","福居"],["","東武和泉"],["","足利市"],["","野州山辺"],["","韮川"],["","太田"],["","細谷"],["","木崎"],["","世良田"],["","境町"],["","剛志"],["","新伊勢崎"],["","伊勢崎"]]},
+{n:"つくばエクスプレス",r:"秋葉原から筑波まで",st:"TX01 秋葉原,TX02 新御徒町,TX03 浅草,TX04 南千住,TX05 北千住,TX06 青井,TX07 六町,TX08 八潮,TX09 三郷中央,TX10 南流山,TX11 流山セントラルパーク,TX12 流山おおたかの森,TX13 柏の葉キャンパス,TX14 柏たなか,TX15 守谷,TX16 みらい平,TX17 みどりの,TX18 万博記念公園,TX19 研究学園,TX20 つくば".split(',').map(s=>s.split(' '))}
+];
+
+// ===== 画面遷移（履歴スタック）=====
+const $=id=>document.getElementById(id);
+const hooks={};
+const stack=[{id:'home'}];
+function show(e){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
+  $(e.id).classList.add('on');
+  if(hooks[e.id])hooks[e.id](e);
+  $('nb').disabled=stack.length<=1;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+const push=e=>{stack.push(e);show(e);};
+const go=id=>push({id});
+$('nb').onclick=()=>{if(stack.length>1){stack.pop();show(stack[stack.length-1]);}};
+$('nt').onclick=()=>{stack.length=1;show(stack[0]);};
+document.addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(b)go(b.dataset.go);});
+$('nb').disabled=true;
+
+// ===== 一問一答（範囲内で重複なしランダム／一つ前に戻れる）=====
+const P={cfg:null,hist:[],ptr:-1,queue:[]};
+const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+function renderQ(){
+  const i=P.hist[P.ptr],c=P.cfg;
+  P.fin=false;document.querySelector('#play .panel').classList.remove('fin');
+  $('ptitle').textContent=c.title;
+  $('pcount').textContent=c.prefix?c.prefix+(i+1)+(c.label?'　［'+c.label+'］':''):(c.showTotal?(P.ptr+1)+' ／ '+(c.pool.length+(c.finale?1:0)):(P.ptr+1)+'問目');
+  $('pq').textContent=c.data[i][0];
+  $('pa').classList.remove('on');$('pa').textContent='';
+  $('pprev').disabled=P.ptr<=0;
+}
+function showFinale(){
+  P.fin=true;
+  const f=P.cfg.finale;
+  $('pfin').innerHTML='<div class="ask">'+f.ask+'</div><h3>'+f.title+'</h3><ul>'+f.items.map(x=>'<li>'+x+'</li>').join('')+'</ul><div class="btns"><button class="btn" id="prestart">最初からやり直す</button></div>';
+  $('prestart').onclick=()=>{P.hist=[];P.ptr=-1;P.queue=[];nextQ();window.scrollTo({top:0,behavior:'smooth'});};
+  $('pcount').style.display='block';$('pcount').textContent=(P.cfg.pool.length+1)+' ／ '+(P.cfg.pool.length+1);
+  document.querySelector('#play .panel').classList.add('fin');
+  $('pprev').disabled=false;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function nextQ(){
+  if(P.cfg.finale&&!P.fin&&P.ptr===P.hist.length-1&&P.hist.length>=P.cfg.pool.length){showFinale();return;}
+  if(P.ptr<P.hist.length-1)P.ptr++;
+  else{if(!P.queue.length)P.queue=P.cfg.ordered?P.cfg.pool.slice().reverse():shuffle(P.cfg.pool.slice());P.hist.push(P.queue.pop());P.ptr++;}
+  renderQ();
+}
+hooks.play=e=>{P.cfg=e.cfg;P.fin=false;P.hist=[];P.ptr=-1;P.queue=[];nextQ();};
+$('pshow').onclick=()=>{$('pa').textContent=P.cfg.data[P.hist[P.ptr]][1];$('pa').classList.add('on');};
+$('pnext').onclick=nextQ;
+$('pprev').onclick=()=>{if(P.fin){renderQ();return;}if(P.ptr>0){P.ptr--;renderQ();}};
+const range=(a,b)=>Array.from({length:b-a+1},(_,i)=>a-1+i);
+const play=cfg=>push({id:'play',cfg});
+
+[[1,20],[21,40],[41,60],[61,80],[81,100],[101,132]].forEach(([a,b])=>{
+  const c=document.createElement('button');c.className='card';c.textContent=a+'〜'+b;
+  c.onclick=()=>play({title:'公式の132問',data:QA,pool:range(a,b),prefix:'Q',label:a+'〜'+b+'（順番どおり）',ordered:true});
+  $('rangemenu').appendChild(c);});
+{const c=document.createElement('button');c.className='card';c.innerHTML='全てランダム<small>1〜132</small>';
+ c.onclick=()=>play({title:'公式の132問',data:QA,pool:range(1,132),prefix:'Q',label:'全て'});$('rangemenu').appendChild(c);}
+$('gofuku1').onclick=()=>play({title:'七福神：寺社 → 七福神',data:FUKU1,pool:range(1,FUKU1.length),prefix:''});
+$('gofuku2').onclick=()=>play({title:'七福神：七福神 → 寺社',data:FUKU2,pool:range(1,FUKU2.length),prefix:''});
+const PAST=[
+["待乳山聖天の瓦が挟まれている塀の名前は？","築地塀"],
+["浅草で芋が有名な理由は？","隅田川を用いて川越から運ばれてきたため。"],
+["浅草における各神社・仏閣の七福神を答える","1. 浅草寺 — 大黒天\n2. 浅草神社 — 恵比寿\n3. 矢先稲荷神社 — 福禄寿\n4. 鷲神社 — 寿老人\n5. 吉原神社 — 弁財天\n6. 石浜神社 — 寿老神\n7. 橋場不動尊 — 布袋尊\n8. 今戸神社 — 福禄寿\n9. 待乳山聖天 — 毘沙門天"],
+["時の鐘を歌った句は？","花の雲　鐘は上野か浅草か"],
+["鯨を食って、芸を磨け。さあ、なんてお店？","捕鯨船"],
+["ハインリッヒの法則は？","300:29:1"],
+["浅草の弁財天は〜弁天？","老女弁天"],
+["昔の人は何で時間を把握していた？","日時計"],
+["宝蔵門の草鞋は何のためにある？また、どこの草鞋？","魔除け、山形県"]];
+const PAST_FIN={ask:"分からなかったら回数が多い研修生に聞いてください！",title:"過去の記述問題リスト",items:["今日のレーンは？","今日は何の日？","我利我利亡者の話は？","人間万事塞翁が馬とは？","知行合一とは？","郷に入れば郷に従うとは？","インサイドアウト、アウトサイドインとは？","スーパーオーガニックバーガーとは何のたとえ？"]};
+$('gopast').onclick=()=>play({title:'過去問',data:PAST,pool:range(1,PAST.length),prefix:'',ordered:true,showTotal:true,finale:PAST_FIN});
+$('go5').onclick=()=>play({title:'5つのメイン寺・神社',data:FIVE,pool:range(1,FIVE.length),prefix:''});
+$('fukuul').innerHTML=FUKU.map(([p,g],i)=>'<li><span>'+(i+1)+'. '+p+'</span><b>'+g+'</b></li>').join('');
+
+// ===== 浅草グルメ（種類 → 系統 → 店名 → 店情報）=====
+const body=$('gbody'),gtitle=$('gtitle');
+function gbtn(html,patch,cur){const b=document.createElement('button');b.className='card';b.innerHTML=html;b.onclick=()=>push({id:'gourmet',g:Object.assign({},cur,patch)});body.appendChild(b);}
+hooks.gourmet=e=>{
+  const g=e.g||{};body.innerHTML='';body.className='menu';
+  if(!g.t){gtitle.textContent='浅草グルメ';
+    for(const k in GOURMET)gbtn(GOURMET[k].name+'<small>'+GOURMET[k].shops.length+'店</small>',{t:k},g);
+  }else if(!g.g){const G=GOURMET[g.t];gtitle.textContent=G.name+'：系統を選ぶ';
+    G.genres.forEach(x=>gbtn(x+'<small>'+G.shops.filter(s=>s.g===x).length+'店</small>',{g:x},g));
+  }else if(!g.s){const G=GOURMET[g.t];gtitle.textContent=g.g;
+    G.shops.filter(s=>s.g===g.g).forEach(s=>gbtn(s.n,{s},g));
+  }else{const s=g.s;gtitle.textContent='店の情報';body.className='';
+    body.innerHTML='<div class="panel shop"><span class="tag">'+s.g+'</span><h3>'+s.n+'</h3><dl class="dl"><div><dt>営業時間</dt><dd>'+s.h+'</dd></div><div><dt>価格帯</dt><dd>'+s.p+'</dd></div><div><dt>ガイド</dt><dd>'+s.d+'</dd></div></dl><p class="soon" style="font-size:.78rem">※営業時間・価格帯は食べログ掲載情報（変わることがあります）</p></div>';}
+};
+
+// ===== 電車路線（路線 → 区間 → 全駅）=====
+LINES.forEach(L=>{
+  const c=document.createElement('div');c.className='card line';c.tabIndex=0;
+  c.innerHTML='<b>'+L.n+'</b><div class="more"><div>'+L.r+'</div><button class="btn ghost">路線図を表示</button><div class="map"></div></div>';
+  const map=c.querySelector('.map'),b=c.querySelector('.btn');
+  c.addEventListener('click',()=>c.classList.add('open'));
+  b.addEventListener('click',e=>{e.stopPropagation();
+    if(map.innerHTML){map.innerHTML='';b.textContent='路線図を表示';return;}
+    map.innerHTML='<ul class="st">'+L.st.map(([cd,nm,nt])=>cd==='#'?'<li class="hd">'+nm+'</li>':cd==='~'?'<li class="sub">'+nm+'</li>':'<li>'+(cd?'<span class="cd">'+cd+'</span>':'')+nm+(nt?'<span class="nt">'+nt+'</span>':'')+'</li>').join('')+'</ul>';
+    b.textContent='路線図を閉じる';});
+  $('lines').appendChild(c);
+});
+
+$('reset').onclick=()=>document.querySelectorAll('#check input').forEach(c=>c.checked=false);
+$('reset2').onclick=()=>document.querySelectorAll('#after input').forEach(c=>c.checked=false);
+// ===== 基準コース（地図：Leaflet＋地理院タイル）=====
+// coords は [緯度, 経度]。two は二段階右折の地点番号（1始まり）。
+// stops があるコースは、その地点だけをステップにする（p＝線の点の番号、t＝動き、n＝説明、s＝次の地点までの通りの名前を直接指定）。線の形は coords のまま。
+const COURSES=[
+ {id:'w1',side:'西',name:'西1区（10分）戻り',two:[],stops:[{p:1,t:'start',n:'出発レーン'},{p:2,t:'two',n:'横断歩道で二段階右折'},{p:3,t:'two',n:'横断歩道で二段階右折'},{p:5,t:'uturn',n:'雷門仲通りでUターン'},{p:6,t:'uturn',n:'雷門仲通りでUターン'},{p:7,t:'uturn',n:'雷門仲通りでUターン'},{p:8,t:'go',n:'オレンジ通りを直進'},{p:9,t:'left',n:'たぬき通りにて左折'},{p:10,t:'right',n:'公園本通りにて右折'},{p:14,t:'right',n:'伝法院通りを右折'},{p:18,t:'right',n:'浅草中央通りを右折'},{p:19,t:'right',n:'雷門柳小路を右折'},{p:20,t:'left',n:'オレンジ通りを左折'},{p:21,t:'merge',n:'雷門通りに合流'},{p:22,t:'goal',n:'終着地'}],coords:[[35.7108945, 139.7967793], [35.7108162, 139.7974014], [35.7106888, 139.7973523], [35.7108057, 139.7964033], [35.7110264, 139.7946692], [35.7108599, 139.7946364], [35.7108704, 139.7945459], [35.711251, 139.7946315], [35.7118581, 139.7947453], [35.7120183, 139.7939322], [35.7122039, 139.7940791], [35.7124065, 139.7942175], [35.7125729, 139.7943041], [35.7129052, 139.7944], [35.7128386, 139.7945973], [35.7128128, 139.794782], [35.7128064, 139.7952894], [35.7128074, 139.7957232], [35.7115911, 139.7955563], [35.7116877, 139.7947842], [35.7111614, 139.7946844], [35.7109088, 139.7966646]]},
+ {id:'w2',side:'西',name:'西2区（20分）戻り',two:[],stops:[{p:1,n:'出発レーン'},{p:2,n:'横断歩道で二段階右折'},{p:3,n:'横断歩道で二段階右折'},{p:5,n:'雷門仲通りでUターン'},{p:6,n:'雷門仲通りでUターン'},{p:7,n:'雷門仲通りでUターン',s:'オレンジ通り'},{p:9,n:'伝法院通りを右折'},{p:11,n:'浅草中央通りを右折'},{p:12,n:'雷門柳小路を右折'},{p:13,n:'オレンジ通りを右折'},{p:14,n:'たぬき通りを左折'},{p:15,n:'公園本通りにて右折'},{p:18,n:'六区通りを左折'},{p:19,n:'国際通りに出る'},{p:20,n:'国際通りを左折'},{p:22,n:'雷門通りを左折'},{p:24,n:'終着地'}],coords:[[35.7109024, 139.796729], [35.7108162, 139.7974014], [35.7106888, 139.7973523], [35.7108133, 139.7963753], [35.7110264, 139.7946692], [35.7108739, 139.7946407], [35.710886, 139.794551], [35.7125347, 139.7948974], [35.7128807, 139.794974], [35.7128702, 139.7951386], [35.7128627, 139.7957401], [35.7115911, 139.7955563], [35.7116993, 139.794713], [35.7118581, 139.7947453], [35.7120243, 139.7938621], [35.7120934, 139.793943], [35.712558, 139.7942587], [35.7129523, 139.794353], [35.713603, 139.793199], [35.7137227, 139.79252], [35.7131565, 139.7924209], [35.7114854, 139.792107], [35.7113936, 139.7929522], [35.7109131, 139.7966252]]},
+ {id:'w30',side:'西',name:'西30分戻り',two:[],stops:[{p:1,n:'出発レーン'},{p:2,n:'横断歩道で二段階右折'},{p:3,n:'横断歩道で二段階右折'},{p:4,n:'雷門仲通りでUターン'},{p:5,n:'雷門仲通りでUターン'},{p:6,n:'雷門仲通りでUターン',s:'オレンジ通り'},{p:7,n:'伝法院通りを右折'},{p:8,n:'浅草中央通りを右折'},{p:9,n:'雷門柳小路を右折'},{p:10,n:'オレンジ通りを右折'},{p:11,n:'たぬき通りを左折'},{p:12,n:'公園本通りにて右折'},{p:15,n:'六区通りを左折'},{p:16,n:'奥山おまいりまちを右折'},{p:18,n:'ホッピー通りを左折'},{p:19,n:'花やしき通りを左折'},{p:20,n:'国際通りを左折'},{p:25,n:'雷門通りを左折'},{p:26,n:'終着地'}],coords:[[35.7109088, 139.7966646], [35.7107813, 139.7975917], [35.7106381, 139.7975122], [35.7110122, 139.7946595], [35.7108599, 139.7946364], [35.7108704, 139.7945459], [35.7128409, 139.7949671], [35.7128074, 139.7957232], [35.7115911, 139.7955563], [35.7117044, 139.7947773], [35.7118523, 139.7948176], [35.7120109, 139.7939065], [35.7124432, 139.7942175], [35.7126941, 139.7943435], [35.7129255, 139.7944132], [35.7136159, 139.7931401], [35.7138206, 139.7936591], [35.7140601, 139.7941137], [35.7153022, 139.7938419], [35.7151987, 139.7926807], [35.7147176, 139.7926539], [35.7142366, 139.792611], [35.7132745, 139.7924502], [35.7123146, 139.7922545], [35.7114854, 139.792107], [35.7109222, 139.7965676]]},
+ {id:'e1',side:'東',name:'東1区（10分）戻り',two:[],stops:[{p:1,n:'出発レーン'},{p:2,n:'吾妻橋交差点を渡る'},{p:3,n:'助六夢通りに向かう'},{p:4,n:'助六夢通りで左折'},{p:14,n:'東二天門通りで左折'},{p:15,n:'江戸通りを左折'},{p:22,n:'吾妻橋交差点で二段階右折'},{p:23,n:'吾妻橋交差点で二段階右折'},{p:24,n:'雷門通りを直進'},{p:25,n:'雷門前の横断歩道でUターン'},{p:27,n:'終着地'}],coords:[[35.7109024, 139.796729], [35.7107942, 139.7975537], [35.7107343, 139.7979249], [35.7106577, 139.7981523], [35.7108003, 139.7982353], [35.7114048, 139.798732], [35.7119256, 139.7991866], [35.7126496, 139.799871], [35.7129016, 139.8001207], [35.7131387, 139.8004327], [35.7132795, 139.8006209], [35.7133779, 139.800734], [35.7135056, 139.800853], [35.7136321, 139.8009746], [35.7137097, 139.8006465], [35.713363, 139.8002464], [35.7131815, 139.8000497], [35.7130163, 139.7998463], [35.7127813, 139.799605], [35.7123085, 139.7991596], [35.7108088, 139.7978908], [35.7107757, 139.797894], [35.7106168, 139.7978194], [35.7106734, 139.7975037], [35.7107843, 139.7966057], [35.7109131, 139.7966252], [35.7109088, 139.7966646]]},
+ {id:'e2',side:'東',name:'東2区（20分）戻り',two:[],stops:[{p:1,n:'出発レーン'},{p:2,n:'吾妻橋交差点を渡る'},{p:3,n:'助六夢通りに向かう'},{p:5,n:'助六夢通りで左折'},{p:16,n:'東二天門通りで左折'},{p:17,n:'江戸通りを左折'},{p:24,n:'Uターン'},{p:27,n:'東の伝法院通りを直進'},{p:32,n:'メトロ通りを右折'},{p:37,n:'弁天堂前を右折'},{p:39,n:'弁天堂・時の鐘ガイド'},{p:44,n:'東二天門通りを右折'},{p:46,n:'二天門ガイド'},{p:47,n:'馬道を一段階右折'},{p:56,n:'吾妻橋交差点で二段階右折'},{p:57,n:'吾妻橋交差点で二段階右折'},{p:58,n:'雷門通りを直進'},{p:59,n:'雷門前の横断歩道でUターン'},{p:61,n:'終着地'}],coords:[[35.7108862, 139.7968569], [35.7107942, 139.7975537], [35.7107534, 139.7979028], [35.710693, 139.7980451], [35.7106756, 139.7981603], [35.7107418, 139.7981923], [35.7108667, 139.7982971], [35.7111259, 139.7984948], [35.7113125, 139.7986461], [35.7115984, 139.7989056], [35.7121266, 139.799367], [35.7127801, 139.7999962], [35.7129684, 139.8002065], [35.7133018, 139.8006475], [35.7133779, 139.800734], [35.7136321, 139.8009746], [35.7137016, 139.800659], [35.713634, 139.800561], [35.7130856, 139.7999489], [35.7129099, 139.7997387], [35.7127982, 139.7996251], [35.7126684, 139.7995175], [35.7124065, 139.7992446], [35.7123722, 139.7992368], [35.7123109, 139.7993386], [35.7122694, 139.7992926], [35.7123288, 139.7991882], [35.7124519, 139.7989779], [35.7125118, 139.7986543], [35.7126414, 139.7979418], [35.7127326, 139.7972373], [35.7127286, 139.7971359], [35.7128071, 139.7971558], [35.7129187, 139.7971651], [35.7131358, 139.7971833], [35.713523, 139.7972394], [35.7135534, 139.7972351], [35.7135905, 139.797459], [35.7135974, 139.7975525], [35.7136301, 139.7975015], [35.713719, 139.797521], [35.7139854, 139.7975799], [35.7140979, 139.7976153], [35.714334, 139.7976653], [35.714307, 139.7978533], [35.7143833, 139.7978711], [35.7143421, 139.7981061], [35.7143113, 139.7982707], [35.7141998, 139.7983022], [35.7138019, 139.7982016], [35.7130614, 139.7980195], [35.7127195, 139.7979378], [35.7125062, 139.7979143], [35.7121151, 139.7978729], [35.7109905, 139.797808], [35.7107757, 139.797894], [35.7106168, 139.7978194], [35.7106734, 139.7975037], [35.7107843, 139.7966057], [35.7109131, 139.7966252], [35.7108945, 139.7967793]]},
+ {id:'e30',side:'東',name:'東30分戻り',two:[],stops:[{p:1,n:'出発レーン'},{p:2,n:'吾妻橋交差点を渡る'},{p:3,n:'助六夢通りに向かう'},{p:4,n:'助六夢通りで左折'},{p:10,n:'東二天門通りで左折'},{p:11,n:'江戸通りを左折'},{p:13,n:'Uターン'},{p:16,n:'東の伝法院通りを直進'},{p:19,n:'メトロ通りを右折'},{p:21,n:'弁天堂前を右折'},{p:22,n:'弁天堂・時の鐘ガイド'},{p:24,n:'二天門ガイド'},{p:25,n:'馬道を左折'},{p:26,n:'浅草神社入口を左折'},{p:29,n:'浅草寺、浅草神社ガイド'},{p:32,n:'馬道を左折'},{p:33,n:'Uターン'},{p:34,n:'Uターン'},{p:37,n:'吾妻橋交差点で二段階右折'},{p:38,n:'吾妻橋交差点で二段階右折'},{p:39,n:'雷門通りを直進'},{p:40,n:'雷門前の横断歩道でUターン'},{p:42,n:'終着地'}],coords:[[35.7108862, 139.7968569], [35.7107942, 139.7975537], [35.7107367, 139.797895], [35.7106577, 139.7981523], [35.7108003, 139.7982353], [35.7114048, 139.798732], [35.7118526, 139.7991298], [35.7128603, 139.8000806], [35.7133711, 139.8007487], [35.7136321, 139.8009746], [35.7136926, 139.8006444], [35.7129257, 139.7997581], [35.7123785, 139.7992231], [35.7123109, 139.7993386], [35.7122694, 139.7992926], [35.7123288, 139.7991882], [35.7124556, 139.7989657], [35.7126414, 139.7979418], [35.7127416, 139.7971424], [35.7131741, 139.797188], [35.7135571, 139.7972466], [35.7136041, 139.7974997], [35.7140047, 139.7975863], [35.7144066, 139.7977315], [35.7143354, 139.7981665], [35.7152329, 139.7983928], [35.715251, 139.7983346], [35.7153078, 139.7979839], [35.7148989, 139.7973438], [35.7149314, 139.7973212], [35.715328, 139.7979794], [35.7152575, 139.7984008], [35.7156748, 139.7985099], [35.7156392, 139.798682], [35.7127066, 139.7979031], [35.7109905, 139.797808], [35.7107757, 139.797894], [35.7106168, 139.7978194], [35.7106734, 139.7975037], [35.7107843, 139.7966057], [35.7109131, 139.7966252], [35.7108945, 139.7967793]]}
+];
+const GEO={
+ dist(a,b){const la=(a[0]+b[0])/2*Math.PI/180,x=(b[1]-a[1])*Math.PI/180*Math.cos(la),y=(b[0]-a[0])*Math.PI/180;return 6371000*Math.hypot(x,y);},
+ brg(a,b){const la=(a[0]+b[0])/2*Math.PI/180,x=(b[1]-a[1])*Math.cos(la),y=b[0]-a[0];return (Math.atan2(x,y)*180/Math.PI+360)%360;},
+ move(p,b,m){const r=b*Math.PI/180;return [p[0]+m*Math.cos(r)/111320,p[1]+m*Math.sin(r)/(111320*Math.cos(p[0]*Math.PI/180))];}
+};
+const DIR8=['北','北東','東','南東','南','南西','西','北西'];
+const dir8=b=>DIR8[Math.round(b/45)%8];
+const r10=m=>Math.max(10,Math.round(m/10)*10);
+const TITLE={start:'出発',goal:'到着',straight:'道なり',go:'直進',right:'右折',left:'左折',uturn:'Uターン',two:'二段階右折',merge:'合流'};
+// 説明から通りの名前を取り出す（例：「伝法院通りを右折」→ 伝法院通り）。その地点から次の地点までの区間に表示する。
+const STREET_RE=/^(.*?(?:通り|小路|まち|馬道))(?:を|にて|で|に合流)/;
+function streetOf(d){
+ if(!d||/Uターン/.test(d)||!/(右折|左折|直進|合流)/.test(d))return '';
+ const m=d.match(STREET_RE);return m?m[1].replace(/^東の/,''):'';
+}
+// 線の点 a〜b の道のりの真ん中の位置と、そこでの向き
+function midAlong(P,a,b){
+ let tot=0;for(let q=a;q<b;q++)tot+=GEO.dist(P[q],P[q+1]);
+ let h=tot/2;
+ for(let q=a;q<b;q++){const d=GEO.dist(P[q],P[q+1]);if(h<=d||q===b-1){const t=d?Math.min(1,h/d):0;return {len:tot,b:GEO.brg(P[q],P[q+1]),p:[P[q][0]+(P[q+1][0]-P[q][0])*t,P[q][1]+(P[q+1][1]-P[q][1])*t]};}h-=d;}
+ return {len:0,b:0,p:P[a]};
+}
+function buildStops(c){
+ const P=c.coords,n=P.length;
+ return c.stops.map((x,j,A)=>{
+  const i=x.p-1,nx=j<A.length-1?A[j+1].p-1:i;
+  let m=0;for(let q=i;q<nx;q++)m+=GEO.dist(P[q],P[q+1]);
+  const inB=i>0?GEO.brg(P[i-1],P[i]):0,outB=i<n-1?GEO.brg(P[i],P[i+1]):inB;
+  let t=x.t;
+  if(!t){if(j===0)t='start';else if(j===A.length-1)t='goal';else{const dt=((outB-inB+540)%360)-180;t=Math.abs(dt)<30?'go':Math.abs(dt)>150?'uturn':(dt>0?'right':'left');}}
+  return {i,type:t,title:'',inB,outB,desc:x.n||'',sub:'',street:x.s||streetOf(x.n)};
+ });
+}
+function buildSteps(c){
+ if(c.stops)return buildStops(c);
+ const P=c.coords,n=P.length,S=[];
+ const seg=i=>({b:GEO.brg(P[i],P[i+1]),m:GEO.dist(P[i],P[i+1])});
+ const go=x=>dir8(x.b)+'へ約'+r10(x.m)+'m進む';
+ S.push({i:0,type:'start',desc:'ここから出発。'+go(seg(0))});
+ for(let i=1;i<n-1;i++){
+  const a=seg(i-1),b=seg(i),dt=((b.b-a.b+540)%360)-180;
+  let type=Math.abs(dt)<30?'straight':Math.abs(dt)>150?'uturn':(dt>0?'right':'left');
+  if((c.two||[]).includes(i+1))type='two';
+  S.push({i,type,inB:a.b,outB:b.b,desc:(type==='straight'?'そのまま':'ここを'+TITLE[type]+'。')+go(b)});
+ }
+ S.push({i:n-1,type:'goal',desc:'ここで到着'});
+ S.forEach(x=>x.title=TITLE[x.type]);
+ return S;
+}
+const CM={map:null,layers:null,lab:null,c:null,steps:[],k:0,mode:'step'};
+function ensureMap(){
+ if(CM.map)return true;
+ if(typeof L==='undefined')return false;
+ CM.map=L.map('cmap',{zoomControl:true});
+ L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png',{maxZoom:20,maxNativeZoom:18,
+   attribution:'<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank" rel="noopener noreferrer">地理院タイル</a>'}).addTo(CM.map);
+ CM.layers=L.layerGroup().addTo(CM.map);
+ CM.lab=L.layerGroup().addTo(CM.map);
+ CM.map.on('moveend zoomend',drawLabels);
+ return true;
+}
+const arrowIcon=(b,cls)=>L.divIcon({className:'arw '+(cls||''),html:'<i style="transform:rotate('+b.toFixed(0)+'deg)"></i>',iconSize:[18,18],iconAnchor:[9,9]});
+const pinIcon=(t,cls)=>L.divIcon({className:'pin '+(cls||''),html:'<span>'+t+'</span>',iconSize:[24,24],iconAnchor:[12,12]});
+const midOf=(a,b)=>[(a[0]+b[0])/2,(a[1]+b[1])/2];
+function drawTwo(g,s,C){
+ const A=GEO.move(C,s.inB+180,24),B=GEO.move(C,s.inB,14),D=GEO.move(B,s.outB,28);
+ L.polyline([A,B],{color:'#1a1717',weight:4}).addTo(g);
+ L.polyline([B,D],{color:'#1a1717',weight:4,dashArray:'6 6'}).addTo(g);
+ L.marker(midOf(A,B),{icon:arrowIcon(GEO.brg(A,B),'ink'),interactive:false}).addTo(g);
+ L.marker(midOf(B,D),{icon:arrowIcon(GEO.brg(B,D),'ink'),interactive:false}).addTo(g);
+ L.marker(B,{icon:L.divIcon({className:'stopmark',html:'<span><b>止</b></span>',iconSize:[22,22],iconAnchor:[11,11]}),interactive:false,zIndexOffset:900}).addTo(g);
+}
+// 通りの名前：区間のうち、いま画面に見えている部分の真ん中に置く（地図を動かすたびに置き直す）
+function labelPos(P,a,b,bd){
+ const smp=[];let tot=0;
+ for(let q=a;q<b;q++){
+  const d=GEO.dist(P[q],P[q+1]),br=GEO.brg(P[q],P[q+1]),n=Math.max(1,Math.round(d/4));
+  for(let t=0;t<n;t++)smp.push({p:[P[q][0]+(P[q+1][0]-P[q][0])*t/n,P[q][1]+(P[q+1][1]-P[q][1])*t/n],b:br});
+  tot+=d;
+ }
+ if(tot<12||!smp.length)return null;
+ if(!bd)return smp[Math.floor(smp.length/2)];
+ let best=null,st=-1;
+ for(let x=0;x<=smp.length;x++){
+  const vis=x<smp.length&&bd.contains(smp[x].p);
+  if(vis&&st<0)st=x;
+  if(!vis&&st>=0){if(!best||x-st>best[1]-best[0])best=[st,x];st=-1;}
+ }
+ if(!best||best[1]-best[0]<2)return null;
+ return smp[Math.floor((best[0]+best[1])/2)];
+}
+function drawLabels(){
+ if(!CM.map||!CM.lab||!CM.c)return;
+ const g=CM.lab;g.clearLayers();
+ const P=CM.c.coords,S=CM.steps,k=CM.k,all=CM.mode==='all';
+ let bd=null;try{bd=CM.map.getBounds().pad(-0.05);}catch(e){}
+ const cand=[];
+ S.forEach((s,j)=>{
+  if(!s.street||j>=S.length-1)return;
+  const a=s.i,b=S[j+1].i;if(b<=a)return;
+  const pos=labelPos(P,a,b,bd);if(!pos)return;
+  cand.push({name:s.street,pos,on:!all&&j===k});
+ });
+ // 同じ名前が近く（45m以内）に重なるときは1つだけ出す。今から進む区間を優先。
+ cand.sort((x,y)=>(y.on?1:0)-(x.on?1:0));
+ const put=[];
+ cand.forEach(c=>{
+  if(put.some(q=>q.name===c.name&&GEO.dist(q.pos.p,c.pos.p)<45))return;
+  put.push(c);
+  const vert=Math.abs(Math.sin(c.pos.b*Math.PI/180))<0.5;
+  L.marker(c.pos.p,{icon:L.divIcon({className:'slabel'+(vert?' v':'')+(c.on?' on':''),html:'<span>'+c.name+'</span>',iconSize:[0,0]}),interactive:false,keyboard:false,zIndexOffset:c.on?800:500}).addTo(g);
+ });
+}
+function drawCourse(){
+ const g=CM.layers;g.clearLayers();
+ const P=CM.c.coords,S=CM.steps,k=CM.k,all=CM.mode==='all',cur=S[k].i;
+ const nx=(!all&&k<S.length-1)?S[k+1].i:cur;
+ L.polyline(P,{color:'#c8161d',weight:5,opacity:all?.9:.22}).addTo(g);
+ if(!all){
+  if(cur>0)L.polyline(P.slice(0,cur+1),{color:'#c8161d',weight:6,opacity:.95}).addTo(g);
+  if(nx>cur)L.polyline(P.slice(cur,nx+1),{color:'#1a1717',weight:5,dashArray:'8 8'}).addTo(g);
+ }
+ for(let i=0;i<P.length-1;i++){
+  if(GEO.dist(P[i],P[i+1])<35)continue;
+  const cls=all?'':(i>=cur&&i<nx?'on':(i<cur?'':'dim'));
+  L.marker(midOf(P[i],P[i+1]),{icon:arrowIcon(GEO.brg(P[i],P[i+1]),cls),interactive:false,keyboard:false}).addTo(g);
+ }
+ L.marker(P[0],{icon:L.divIcon({className:'flag',html:'<span>出発</span>',iconSize:[44,22],iconAnchor:[22,34]}),interactive:false}).addTo(g);
+ L.marker(P[P.length-1],{icon:L.divIcon({className:'flag goal',html:'<span>到着</span>',iconSize:[44,22],iconAnchor:[22,-12]}),interactive:false}).addTo(g);
+ if(all){
+  S.forEach((s,j)=>{if(s.type==='start'||s.type==='goal')return;
+   L.marker(P[s.i],{icon:pinIcon(j+1,s.type)}).on('click',()=>{CM.mode='step';CM.k=j;renderCM();}).addTo(g);});
+  CM.map.fitBounds(L.latLngBounds(P),{padding:[24,24]});
+ }else{
+  const s=S[k];
+  L.marker(P[cur],{icon:pinIcon(k+1,'cur '+s.type),zIndexOffset:1000,interactive:false}).addTo(g);
+  CM.map.setView(P[cur],18,{animate:true});
+ }
+ drawLabels();
+}
+function renderCM(){
+ const S=CM.steps,k=CM.k,s=S[k],all=CM.mode==='all';
+ $('cstep').style.display=all?'none':'';
+ $('cmlist').style.display=all?'':'none';
+ if(all){
+  $('cmlist').innerHTML='<h3>地点の一覧</h3><ol class="slist">'+S.map((x,j)=>'<li data-j="'+j+'">'+(x.title?'<b class="tt t-'+x.type+'">'+x.title+'</b>':'')+'<span>'+x.desc+'</span></li>').join('')+'</ol><div class="btns"><button class="btn" id="cmback">ステップ表示に戻る</button></div>';
+  $('cmlist').querySelectorAll('li').forEach(li=>li.onclick=()=>{CM.mode='step';CM.k=+li.dataset.j;renderCM();window.scrollTo({top:0,behavior:'smooth'});});
+  $('cmback').onclick=()=>{CM.mode='step';renderCM();window.scrollTo({top:0,behavior:'smooth'});};
+ }else{
+  $('cmcount').textContent=(k+1)+' ／ '+S.length;
+  $('cmhead').innerHTML=s.title?'<span class="tt t-'+s.type+'">'+s.title+'</span>':'';
+  $('cmdesc').textContent=s.desc;
+  $('cmsub').textContent=s.sub||'';
+  $('cmtwo').classList.toggle('on',s.type==='two'&&!CM.c.stops);
+  $('cmprev').disabled=k===0;
+  $('cmnext').disabled=k===S.length-1;
+  $('cmhome').disabled=k===0;
+ }
+ if(CM.map)drawCourse();
+}
+$('cmprev').onclick=()=>{if(CM.k>0){CM.k--;renderCM();}};
+$('cmnext').onclick=()=>{if(CM.k<CM.steps.length-1){CM.k++;renderCM();}};
+$('cmall').onclick=()=>{CM.mode='all';renderCM();};
+$('cmhome').onclick=()=>{CM.mode='step';CM.k=0;renderCM();};
+hooks.coursemap=e=>{
+ const c=COURSES.find(x=>x.id===e.c);
+ CM.c=c;CM.steps=buildSteps(c);CM.k=0;CM.mode='step';
+ $('cmtitle').textContent=c.name;
+ const ok=ensureMap();
+ $('cmap').classList.toggle('nomap',!ok);
+ renderCM();
+ if(ok)setTimeout(()=>{CM.map.invalidateSize();drawCourse();},80);
+};
+(()=>{
+ const box=$('courselist');
+ ['西','東'].forEach(side=>{
+  const h=document.createElement('h3');h.className='chead2';h.textContent=side+'コース';box.appendChild(h);
+  const m=document.createElement('div');m.className='menu';box.appendChild(m);
+  COURSES.filter(c=>c.side===side).forEach(c=>{
+   const b=document.createElement('button');b.className='card'+(c.coords?'':' off');
+   b.innerHTML=c.name+(c.coords?'':'<small>準備中</small>');
+   if(c.coords)b.onclick=()=>push({id:'coursemap',c:c.id});else b.disabled=true;
+   m.appendChild(b);
+  });
+ });
+})();
+</script>
+</body>
+</html>

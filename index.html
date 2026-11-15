@@ -620,7 +620,11 @@ function renderCM(){
   $('cmsub').textContent=s.sub||'';
   // ストリートビュー：その地点に着くときの向き（出発だけは進む向き）で開く
   {const pt=CM.c.coords[s.i],hd=Math.round(((k===0?s.outB:s.inB)||0)%360);
-   $('cmsv').href='https://www.google.com/maps/@?api=1&map_action=pano&viewpoint='+pt[0]+'%2C'+pt[1]+'&heading='+hd+'&pitch=0';}
+   // スマホは「api=1&map_action=pano」だと別の写真が出ることがあるため、座標を直接指定する形式（layer=c&cbll）を使う。PCは従来の形式。
+   const mobile=/iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+   $('cmsv').href=mobile
+    ?'https://www.google.com/maps?layer=c&cbll='+pt[0]+','+pt[1]+'&cbp=11,'+hd+',0,0,0'
+    :'https://www.google.com/maps/@?api=1&map_action=pano&viewpoint='+pt[0]+'%2C'+pt[1]+'&heading='+hd+'&pitch=0';}
   $('cmtwo').classList.toggle('on',s.type==='two'&&!CM.c.stops);
   $('cmprev').disabled=k===0;
   $('cmnext').disabled=k===S.length-1;

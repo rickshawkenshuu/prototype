@@ -151,6 +151,8 @@ body{padding-bottom:84px}
 .slabel span{position:absolute;left:0;top:0;white-space:nowrap;transform:translate(-50%,calc(-100% - 9px));background:rgba(255,255,255,.94);color:#1a1717;border:1px solid #1a1717;border-radius:2px;padding:1px 7px;font:700 12px/1.5 "Hiragino Sans","Yu Gothic",sans-serif;letter-spacing:.06em;box-shadow:0 1px 2px rgba(0,0,0,.2)}
 .slabel.v span{writing-mode:vertical-rl;transform:translate(9px,-50%);padding:7px 1px}
 .slabel.on span{background:#1a1717;color:#fff;font-size:13px}
+.svrow{margin:2px 0 4px}
+.csub:empty{display:none}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -263,6 +265,7 @@ body{padding-bottom:84px}
       <div class="chead" id="cmhead"></div>
       <p class="cdesc" id="cmdesc"></p>
       <p class="csub" id="cmsub"></p>
+      <div class="svrow"><a class="lk" id="cmsv" href="#" target="_blank" rel="noopener noreferrer">この場所の景色を見る</a></div>
       <ol class="twosteps" id="cmtwo">
         <li>交差点を直進して、向こう側の角まで進む</li>
         <li>角で止まり、右へ向きを変える</li>
@@ -498,18 +501,18 @@ function buildSteps(c){
  const P=c.coords,n=P.length,S=[];
  const seg=i=>({b:GEO.brg(P[i],P[i+1]),m:GEO.dist(P[i],P[i+1])});
  const go=x=>dir8(x.b)+'へ約'+r10(x.m)+'m進む';
- S.push({i:0,type:'start',desc:'ここから出発。'+go(seg(0))});
+ S.push({i:0,type:'start',outB:seg(0).b,desc:'ここから出発。'+go(seg(0))});
  for(let i=1;i<n-1;i++){
   const a=seg(i-1),b=seg(i),dt=((b.b-a.b+540)%360)-180;
   let type=Math.abs(dt)<30?'straight':Math.abs(dt)>150?'uturn':(dt>0?'right':'left');
   if((c.two||[]).includes(i+1))type='two';
   S.push({i,type,inB:a.b,outB:b.b,desc:(type==='straight'?'そのまま':'ここを'+TITLE[type]+'。')+go(b)});
  }
- S.push({i:n-1,type:'goal',desc:'ここで到着'});
+ S.push({i:n-1,type:'goal',inB:seg(n-2).b,desc:'ここで到着'});
  S.forEach(x=>x.title=TITLE[x.type]);
  return S;
 }
-const CM={map:null,layers:null,lab:null,c:null,steps:[],k:0,mode:'step'};
+const CM={zoom:18,map:null,layers:null,lab:null,c:null,steps:[],k:0,mode:'step'};
 function ensureMap(){
  if(CM.map)return true;
  if(typeof L==='undefined')return false;
@@ -519,6 +522,8 @@ function ensureMap(){
  CM.layers=L.layerGroup().addTo(CM.map);
  CM.lab=L.layerGroup().addTo(CM.map);
  CM.map.on('moveend zoomend',drawLabels);
+ // ステップ表示で手で変えた倍率を覚えておき、「次へ」でもその倍率のまま移動する
+ CM.map.on('zoomend',()=>{if(CM.mode==='step')CM.zoom=CM.map.getZoom();});
  return true;
 }
 const arrowIcon=(b,cls)=>L.divIcon({className:'arw '+(cls||''),html:'<i style="transform:rotate('+b.toFixed(0)+'deg)"></i>',iconSize:[18,18],iconAnchor:[9,9]});
@@ -596,7 +601,7 @@ function drawCourse(){
  }else{
   const s=S[k];
   L.marker(P[cur],{icon:pinIcon(k+1,'cur '+s.type),zIndexOffset:1000,interactive:false}).addTo(g);
-  CM.map.setView(P[cur],18,{animate:true});
+  CM.map.setView(P[cur],CM.zoom,{animate:true});
  }
  drawLabels();
 }
@@ -613,6 +618,9 @@ function renderCM(){
   $('cmhead').innerHTML=s.title?'<span class="tt t-'+s.type+'">'+s.title+'</span>':'';
   $('cmdesc').textContent=s.desc;
   $('cmsub').textContent=s.sub||'';
+  // ストリートビュー：その地点に着くときの向き（出発だけは進む向き）で開く
+  {const pt=CM.c.coords[s.i],hd=Math.round(((k===0?s.outB:s.inB)||0)%360);
+   $('cmsv').href='https://www.google.com/maps/@?api=1&map_action=pano&viewpoint='+pt[0]+'%2C'+pt[1]+'&heading='+hd+'&pitch=0';}
   $('cmtwo').classList.toggle('on',s.type==='two'&&!CM.c.stops);
   $('cmprev').disabled=k===0;
   $('cmnext').disabled=k===S.length-1;
@@ -626,7 +634,7 @@ $('cmall').onclick=()=>{CM.mode='all';renderCM();};
 $('cmhome').onclick=()=>{CM.mode='step';CM.k=0;renderCM();};
 hooks.coursemap=e=>{
  const c=COURSES.find(x=>x.id===e.c);
- CM.c=c;CM.steps=buildSteps(c);CM.k=0;CM.mode='step';
+ CM.c=c;CM.steps=buildSteps(c);CM.k=0;CM.mode='step';CM.zoom=18;
  $('cmtitle').textContent=c.name;
  const ok=ensureMap();
  $('cmap').classList.toggle('nomap',!ok);

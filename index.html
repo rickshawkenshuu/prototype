@@ -622,7 +622,11 @@ function renderCM(){
   {const pt=CM.c.coords[s.i],hd=Math.round(((k===0?s.outB:s.inB)||0)%360);
    // スマホのGoogleマップは、近くの投稿写真（空中・地下など）を選んでしまい、道路の景色に限定する指定がURLではできない。
    // そのためスマホでは、その地点をGoogleマップの地図（ピン）で開く。PCはストリートビューを直接開く。
-   const mobile=/iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+   // スマホの判定：端末名のほか、LINEなどのアプリ内ブラウザ、指で操作する画面（タッチ）も対象にする
+   const ua=navigator.userAgent||'';
+   const mobile=/iPhone|iPad|iPod|Android|Mobile|Line\//i.test(ua)
+     ||(navigator.maxTouchPoints>1&&/Macintosh/.test(ua))
+     ||(window.matchMedia&&window.matchMedia('(pointer:coarse)').matches);
    $('cmsv').textContent=mobile?'この場所をGoogleマップで開く':'この場所の景色を見る';
    $('cmsv').href=mobile
     ?'https://www.google.com/maps/search/?api=1&query='+pt[0]+'%2C'+pt[1]

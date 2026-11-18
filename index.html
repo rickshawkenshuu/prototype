@@ -7,81 +7,120 @@
 <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="referrer" content="no-referrer">
 <title>研修生サイト</title>
-<meta name="description" content="一問一答・グルメ・電車路線・出勤前チェックをまとめた研修用サイト">
+<meta name="description" content="一問一答・基準コース・浅草グルメ・電車路線・出勤前後の確認・料金計算">
 <meta name="theme-color" content="#fbfaf8">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:title" content="研修生サイト">
-<meta property="og:description" content="一問一答・グルメ・電車路線・出勤前チェックをまとめた研修用サイト">
+<meta property="og:description" content="一問一答・基準コース・浅草グルメ・電車路線・出勤前後の確認・料金計算">
 <meta property="og:url" content="https://rikishaw.github.io/training_3/">
 <meta property="og:image" content="https://rikishaw.github.io/training_3/ogp.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="研修生サイト">
+<meta property="og:site_name" content="研修生サイト">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='22' fill='%23c8161d'/%3E%3C/svg%3E">
 <style>
-:root{--bg:#fbfaf8;--card:#fff;--line:#e6e1da;--red:#c8161d;--red2:#a30f15;--ink:#1a1717;--sub:#6f6660}
+:root{--bg:#fbfaf8;--card:#fff;--line:#e6e1da;--red:#c8161d;--red2:#a30f15;--ink:#1a1717;--sub:#6f6660;--cream:#fff;--cream-sub:#6f6660;--mincho:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"Noto Serif JP","Source Han Serif JP","Shippori Mincho",serif;--gothic:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif}
 *{box-sizing:border-box;margin:0}
-body{background:var(--bg);color:var(--ink);font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;min-height:100vh;line-height:1.8}
-header{background:#fff;color:var(--ink);text-align:center;padding:34px 16px 26px;border-bottom:1px solid var(--line);position:relative;animation:fade 1s both}
+body{background:var(--bg);color:var(--ink);font-family:var(--mincho);min-height:100vh;line-height:1.85;
+ -webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;text-size-adjust:100%}
+header{background:#fff;color:var(--ink);text-align:center;padding:30px 16px 24px;border-bottom:1px solid var(--line);position:relative;animation:fade 1s both}
 header::after{content:"";position:absolute;left:50%;bottom:-1px;width:56px;height:2px;margin-left:-28px;background:var(--red)}
 .mark{display:block;width:14px;height:14px;background:var(--red);border-radius:50%;margin:0 auto 14px}
-h1{font-size:clamp(1.6rem,6vw,2.2rem);letter-spacing:.4em;padding-left:.4em;font-weight:600}
-header p{color:var(--sub);font-size:.8rem;letter-spacing:.35em;margin-top:2px}
+h1{font-family:var(--mincho);font-size:clamp(1.5rem,5.6vw,2rem);letter-spacing:.38em;padding-left:.38em;font-weight:600}
+header p{color:var(--cream-sub);font-size:.78rem;letter-spacing:.3em;margin-top:4px}
 main{width:100%;max-width:560px;margin:0 auto;padding:28px 16px 56px}
 .view{display:none}.view.on{display:block;animation:fade .7s both}
-h2{text-align:center;font-size:1.05rem;font-weight:600;letter-spacing:.25em;margin-bottom:22px;padding-bottom:12px;border-bottom:1px solid var(--line);position:relative}
+h2{font-family:var(--mincho);text-align:center;font-size:1.1rem;font-weight:600;letter-spacing:.22em;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--line);position:relative}
 h2::after{content:"";position:absolute;left:50%;bottom:-1px;width:40px;height:2px;margin-left:-20px;background:var(--red)}
-.menu{display:grid;gap:14px}
-.card{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--red);border-radius:2px;padding:18px 16px;text-align:center;color:var(--ink);font:inherit;font-size:1.08rem;letter-spacing:.1em;cursor:pointer;transition:.25s;width:100%;display:block;}
-.card small{display:block;color:var(--sub);font-size:.78rem;letter-spacing:.06em;line-height:1.6}
-.card:hover,.card:focus-visible{border-left-color:var(--ink);transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.06);outline:none}
-.menu .card{animation:fade .8s both}
-.menu .card:nth-child(1){animation-delay:.1s}.menu .card:nth-child(2){animation-delay:.2s}.menu .card:nth-child(3){animation-delay:.3s}.menu .card:nth-child(4){animation-delay:.4s}.menu .card:nth-child(5){animation-delay:.5s}.menu .card:nth-child(6){animation-delay:.6s}.menu .card:nth-child(7){animation-delay:.7s}.menu .card:nth-child(8){animation-delay:.8s}
-.panel{background:var(--card);border:1px solid var(--line);border-top:2px solid var(--red);border-radius:2px;padding:28px 18px;text-align:center}
-.count{color:var(--sub);font-size:.85rem;letter-spacing:.15em}
-.q{font-size:clamp(1.15rem,4.5vw,1.45rem);margin:16px 0;min-height:4.5em;display:flex;align-items:center;justify-content:center}
-.a{border-top:1px dashed var(--line);padding-top:14px;color:var(--red);font-size:1.1rem;font-weight:700;min-height:5em;opacity:0;transition:opacity .5s;white-space:pre-line}
+.menu{display:grid;gap:12px}
+.card{position:relative;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--red);border-radius:3px;padding:17px 34px 17px 20px;font-family:var(--mincho);min-height:58px;text-align:center;color:var(--ink);font:inherit;font-size:1.08rem;letter-spacing:.1em;cursor:pointer;transition:.25s;width:100%;display:block;}
+.card small{display:block;font-family:var(--gothic);color:var(--sub);font-size:.76rem;letter-spacing:.02em;line-height:1.6;margin-top:3px}
+.menu>.card::after,#courselist .card::after{content:"";position:absolute;right:15px;top:50%;width:7px;height:7px;margin-top:-4px;border-right:1.5px solid var(--red);border-bottom:1.5px solid var(--red);transform:rotate(-45deg);opacity:.75}
+.card:active{transform:translateY(0);background:#f3f0ea}
+.line.open::after{display:none}
+.line.open{background:#fbfaf8}
+.card:hover,.card:focus-visible{border-left-color:var(--ink);transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,0,0,.07);outline:none}
+.card:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.menu .card{animation:fade .5s both}
+.menu .card:nth-child(1){animation-delay:.04s}.menu .card:nth-child(2){animation-delay:.08s}.menu .card:nth-child(3){animation-delay:.12s}.menu .card:nth-child(4){animation-delay:.16s}.menu .card:nth-child(5){animation-delay:.2s}.menu .card:nth-child(6){animation-delay:.24s}.menu .card:nth-child(7){animation-delay:.28s}.menu .card:nth-child(8){animation-delay:.32s}
+.panel{background:var(--card);border:1px solid var(--line);border-top:2px solid var(--red);border-radius:3px;padding:24px 18px;text-align:center;color:var(--ink)}
+.count{color:var(--sub);font-size:.8rem;letter-spacing:.12em}
+.q{font-family:var(--mincho);font-size:clamp(1.18rem,4.6vw,1.45rem);line-height:1.75;margin:14px 0 16px;min-height:3.6em;display:flex;align-items:center;justify-content:center}
+.a{border-top:1px dashed var(--line);padding-top:14px;color:var(--red);font-size:1.08rem;font-weight:700;line-height:1.8;min-height:3.4em;opacity:0;transition:opacity .35s;white-space:pre-line}
 .a.on{opacity:1}
-.btns{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
-.btn{flex:1 1 140px;padding:13px;border:1px solid var(--red);background:var(--red);color:#fff;font:inherit;letter-spacing:.1em;border-radius:3px;cursor:pointer;transition:.2s}
+.btns{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.btn{flex:1 1 120px;min-height:50px;padding:13px 8px;border:1px solid var(--red);background:var(--red);color:#fff;font:inherit;font-size:.98rem;letter-spacing:.02em;white-space:nowrap;border-radius:3px;cursor:pointer;transition:background .2s,color .2s,transform .1s}
 .btn:hover{background:var(--red2)}
+.btn:active{transform:scale(.98)}
+.btn:focus-visible{outline:2px solid var(--red);outline-offset:2px}
 .btn.ghost{background:#fff;color:var(--ink);border-color:var(--ink)}
 .btn.ghost:hover{background:var(--ink);color:#fff}
 .back{margin-top:20px;text-align:center}
-.back button{background:none;border:none;color:var(--sub);font:inherit;cursor:pointer;letter-spacing:.1em;text-decoration:underline}
+.back{margin-top:18px;text-align:center}
+.back button{background:none;border:none;color:var(--cream-sub);font:inherit;font-size:.9rem;cursor:pointer;padding:10px 14px;letter-spacing:.04em;text-decoration:underline;text-underline-offset:3px}
 .soon{color:var(--sub);text-align:center;padding:12px}
 .dl{text-align:left}
-.dl div{padding:12px 4px;border-bottom:1px solid var(--line)}
+.dl div{padding:13px 2px;border-bottom:1px solid var(--line)}
 .dl div:last-child{border:0}
-.dl dt{color:var(--red);font-size:.8rem;letter-spacing:.15em}
-.dl dd{margin:0}
-.shop h3{font-size:1.3rem;letter-spacing:.1em;text-align:center;margin-bottom:6px}
+.dl dt{color:var(--red);font-size:.78rem;letter-spacing:.12em;font-weight:700;margin-bottom:2px}
+.dl dd{margin:0;font-size:1rem;line-height:1.8}
+.shop h3{font-family:var(--mincho);font-size:1.35rem;letter-spacing:.08em;text-align:center;margin-bottom:8px;line-height:1.5}
 .tag{display:inline-block;border:1px solid var(--red);color:var(--red);font-size:.75rem;padding:0 8px;border-radius:2px;margin-bottom:10px}
 .st{list-style:none;padding:0;margin:16px 0 4px 18px;border-left:4px solid var(--red);text-align:left}
-.st li{position:relative;padding:5px 0 5px 22px}
-.st li::before{content:"";position:absolute;left:-11px;top:13px;width:12px;height:12px;background:#fff;border:3px solid var(--ink);border-radius:50%}
-.st .cd{color:var(--red);font-size:.8rem;margin-right:8px;letter-spacing:.05em}
+.st li{position:relative;padding:7px 0 7px 22px;font-size:.98rem}
+.st li::before{content:"";position:absolute;left:-11px;top:13px;width:12px;height:12px;background:var(--card);border:3px solid var(--ink);border-radius:50%}
+.st .cd{display:inline-block;min-width:3.1em;color:var(--red);font-size:.76rem;margin-right:8px;letter-spacing:.03em;font-weight:700}
 .st .nt{color:var(--sub);font-size:.8rem;margin-left:6px}
-.line .more{display:none;margin-top:12px;font-size:1rem}
+.line .more{display:none;margin-top:12px;font-size:1rem;font-family:var(--gothic)}
 .line.open .more{display:block}
 .line.open{border-left-color:var(--ink);cursor:default}
 .line .btn{margin-top:10px;padding:8px 16px;flex:none}
-.chk{display:flex;gap:12px;align-items:center;padding:14px 4px;border-bottom:1px solid var(--line);cursor:pointer;text-align:left}
-.chk input{accent-color:var(--red);width:20px;height:20px;flex:none}
+.chk{display:flex;gap:13px;align-items:center;padding:15px 4px;border-bottom:1px solid var(--line);cursor:pointer;text-align:left;font-size:1rem;border-radius:2px}
+.chk:active{background:#f3f0ea}
+.chk input{accent-color:var(--red);width:22px;height:22px;flex:none}
 .chk input:checked+span{color:var(--sub);text-decoration:line-through}
 @keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 a.card{text-decoration:none}
-body{padding-bottom:84px}
+[hidden]{display:none!important}
+#home .menu>.card{padding-left:60px;padding-right:60px}
+@media(max-width:365px){#home .menu>.card{padding-left:52px;padding-right:42px}.ic{left:13px;width:30px;height:30px;margin-top:-15px}}
+.ic{position:absolute;left:16px;top:50%;width:32px;height:32px;margin-top:-16px;color:var(--red)}
+.btn.ok{background:#fff;color:var(--ink);border-color:var(--ink)}
+.btn.ok:hover{background:var(--ink);color:#fff}
+.btn.ng{background:#fff;color:var(--red);border-color:var(--red)}
+.btn.ng:hover{background:var(--red);color:#fff}
+.judge{margin-top:10px}
+.ngmark{display:inline-block;margin-left:8px;padding:0 7px;border:1px solid var(--red);color:var(--red);border-radius:2px;font-size:.72rem;letter-spacing:.06em}
+.card .cnt{float:right;color:var(--red);font-size:.82rem;font-weight:700}
+.card.off{opacity:.5;cursor:default}
+.card.off::after{display:none}
+/* 和の明朝を基本にしつつ、小さな字・ボタン・数字はゴシックで読みやすく */
+.btn,#nav button,.back button,.card small,.count,.csub,.tag,.dl dt,.st .cd,.st .nt,.lk,.fuku i,.sub,.soon{font-family:var(--gothic)}
+.ft{font-family:var(--gothic);font-feature-settings:"tnum" 1}
+.fm .eq{font-family:var(--gothic)}
+body{padding-bottom:calc(86px + env(safe-area-inset-bottom))}
 .list li b{color:var(--red);font-weight:600}
+.fuku{list-style:none;margin:0;padding:0;text-align:left}
+.fuku li{display:grid;grid-template-columns:26px 1fr auto;align-items:center;gap:10px;padding:13px 2px;border-bottom:1px solid var(--line)}
+.fuku li:last-child{border-bottom:0}
+.fuku i{display:flex;align-items:center;justify-content:center;width:26px;height:26px;border:1px solid var(--line);border-radius:50%;font:600 .78rem/1 sans-serif;font-style:normal;color:var(--sub)}
+.fuku span{font-family:var(--mincho);font-size:1.06rem;letter-spacing:.04em}
+.fuku b{font-family:var(--mincho);color:var(--red);font-weight:700;font-size:1.06rem;letter-spacing:.08em;white-space:nowrap}
 .st .hd{margin:14px 0 4px -22px;padding:0 0 0 22px;font-weight:700;letter-spacing:.15em;color:var(--red)}
 .st .hd::before{display:none}
+.st .org{font-weight:700;font-size:1.1rem}
+.st .org::before{background:var(--red);border-color:var(--red);width:14px;height:14px;left:-12px}
 .st .sub{color:var(--sub);font-size:.8rem;padding-left:22px}
 .st .sub::before{display:none}
 .btn:disabled{opacity:.35;cursor:default}
 #nav{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;gap:10px;justify-content:center;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);border-top:1px solid var(--line)}
-#nav button{flex:1;max-width:270px;padding:12px 8px;border:1px solid var(--ink);background:#fff;color:var(--ink);font:inherit;letter-spacing:.1em;border-radius:2px;cursor:pointer}
+#nav button{flex:1;max-width:270px;min-height:48px;padding:12px 8px;border:1px solid var(--ink);background:#fff;color:var(--ink);font:inherit;font-size:.95rem;letter-spacing:.04em;border-radius:3px;cursor:pointer;transition:background .2s}
+#nav button:active{transform:scale(.98)}
 #nav button#nt{background:var(--red);border-color:var(--red);color:#fff}
 #nav button:disabled{opacity:.35;cursor:default}
 
@@ -99,26 +138,26 @@ body{padding-bottom:84px}
 #pfin li::before{content:"・";color:var(--red)}
 #pfin .btns{margin-top:18px}
 .fare{text-align:center}
-.fare h3{font-size:.95rem;letter-spacing:.2em;margin:22px 0 10px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.fare h3{font-family:var(--mincho);font-size:1rem;letter-spacing:.18em;margin:22px 0 10px;padding-bottom:8px;border-bottom:1px solid var(--line)}
 .fare h3:first-child{margin-top:0}
 .ft{width:100%;border-collapse:collapse;font-size:1.05rem}
-.ft th,.ft td{padding:11px 6px;border-bottom:1px solid var(--line)}
+.ft th,.ft td{padding:12px 6px;border-bottom:1px solid var(--line)}
 .ft thead th{font-weight:600;letter-spacing:.2em;border-bottom:2px solid var(--ink)}
 .ft tbody th{font-weight:600;text-align:left;padding-left:10px}
 .ft td{font-weight:600}
 .fm{display:flex;flex-direction:column;gap:2px;padding:12px 8px;margin:8px 0;border:1px solid var(--line);border-left:3px solid var(--red);border-radius:2px;text-align:left}
 .fm .who{color:var(--sub);font-size:.82rem;letter-spacing:.15em}
-.fm .eq{font-size:1.25rem;font-weight:700;letter-spacing:.08em}
+.fm .eq{font-size:1.28rem;font-weight:700;letter-spacing:.06em}
 .fm.off{text-align:center}.fm.off .eq{color:var(--red)}
 .fnote{color:var(--sub);font-size:.85rem;margin-top:4px}
-.chead2{font-size:.95rem;letter-spacing:.2em;margin:18px 0 10px;text-align:center;color:var(--sub)}
+.chead2{font-family:var(--mincho);font-size:.95rem;letter-spacing:.2em;margin:20px 0 10px;text-align:center;color:var(--sub)}
 .card.off{opacity:.45;cursor:default;border-left-color:var(--line)}
 .card.off:hover{transform:none;box-shadow:none}
 .cmap{position:relative;z-index:0;height:40vh;min-height:260px;max-height:480px;border:1px solid var(--line);border-radius:2px;background:#eee;margin-bottom:14px}
 .cmap.nomap::after{content:"地図を読み込めませんでした。通信環境を確認して、開き直してください。";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:20px;text-align:center;color:var(--sub);font-size:.9rem}
 .cstep{padding:20px 16px}
 .chead{margin:8px 0 4px}
-.cdesc{font-size:1.15rem;font-weight:600;line-height:1.7;min-height:1.7em;margin-top:6px}
+.cdesc{font-family:var(--mincho);font-size:1.2rem;font-weight:600;line-height:1.7;min-height:1.7em;margin-top:8px}
 .csub{color:var(--sub);font-size:.9rem;min-height:1.6em}
 .tt{display:inline-block;padding:2px 14px;border-radius:2px;font-weight:700;letter-spacing:.15em;font-size:1.15rem;border:2px solid var(--ink);color:var(--ink);background:#fff}
 .tt.t-right{border-color:var(--red);color:var(--red)}
@@ -126,9 +165,10 @@ body{padding-bottom:84px}
 .tt.t-start,.tt.t-goal{background:var(--ink);color:#fff}
 .twosteps{display:none;text-align:left;margin:10px 0 0;padding:12px 12px 12px 34px;border:1px solid var(--red);border-radius:2px;background:#fff7f7;line-height:1.8}
 .twosteps.on{display:block}
-.clist h3{font-size:.95rem;letter-spacing:.2em;margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.clist h3{font-family:var(--mincho);font-size:1rem;letter-spacing:.18em;margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--line)}
 .slist{text-align:left;padding-left:2.2em;margin:0}
-.slist li{padding:9px 2px;border-bottom:1px solid var(--line);cursor:pointer}
+.slist li{padding:11px 2px;border-bottom:1px solid var(--line);cursor:pointer}
+.slist li:active{background:#f3f0ea}
 .slist li .tt{font-size:.8rem;padding:0 8px;margin-right:8px;border-width:1px}
 .slist li span{font-size:.9rem}
 .arw{background:none;border:0}
@@ -162,14 +202,13 @@ body{padding-bottom:84px}
 <main>
   <section class="view on" id="home">
     <div class="menu">
-      <button class="card" data-go="quizmenu">研修生一問一答</button>
-      <button class="card" data-go="courses">基準コース<small>地図で順路を確認</small></button>
-      <button class="card" data-go="gourmet">浅草グルメ</button>
-      <button class="card" data-go="train">電車路線</button>
-      <button class="card" data-go="fare">人力車料金計算方法</button>
-      <a class="card" href="https://www.google.com/maps/d/u/0/viewer?mid=1O4N63zRXXhBYlwskBWLnWKOyMqNeOb34&hl=ja&femb=1&ll=35.713707239212994%2C139.7975229764587&z=16" target="_blank" rel="noopener noreferrer">浅草トイレマップ<small>Googleマップが開きます</small></a>
-      <button class="card" data-go="check">出勤前確認事項</button>
-      <button class="card" data-go="after">出勤後確認事項</button>
+      <button class="card" data-go="quizmenu"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.3 9.3a2.7 2.7 0 1 1 3.4 2.8c-.6.2-.9.7-.9 1.3v.5"/><circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></svg>研修生一問一答</button>
+      <button class="card" data-go="courses"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.2s6.8-6.4 6.8-11.1a6.8 6.8 0 1 0-13.6 0c0 4.7 6.8 11.1 6.8 11.1z"/><circle cx="12" cy="9.9" r="2.5"/></svg>基準コース<small>地図で順路を確認</small></button>
+      <button class="card" data-go="gourmet"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h15a7.5 7.5 0 0 1-15 0z"/><path d="M6 19h9"/><path d="M13.2 8c0-1.4 1.6-1.5 1.6-2.9s-1.6-1.5-1.6-2.9"/><path d="M9.2 8c0-1.4 1.6-1.5 1.6-2.9S9.2 3.6 9.2 2.2"/></svg>浅草グルメ</button>
+      <button class="card" data-go="train"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5.5" y="3" width="13" height="13" rx="3"/><path d="M5.5 10h13"/><circle cx="9" cy="13" r="1.05" fill="currentColor" stroke="none"/><circle cx="15" cy="13" r="1.05" fill="currentColor" stroke="none"/><path d="M9 16.2 7 20.2M15 16.2l2 4"/></svg>電車路線</button>
+      <button class="card" data-go="fare"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 7 4 4.7L16 7"/><path d="M8.3 12.5h7.4M8.3 15.1h7.4M12 11.7V17.2"/></svg>人力車料金計算方法</button>
+      <button class="card" data-go="check"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 18.6h19"/><path d="M6.6 15.2a5.4 5.4 0 0 1 10.8 0"/><path d="M12 2.6v2.8M4.3 5.5l2 2M19.7 5.5l-2 2"/></svg>出勤前確認事項</button>
+      <button class="card" data-go="after"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19.6 14.7A8 8 0 0 1 9.3 4.4a8 8 0 1 0 10.3 10.3z"/></svg>出勤後確認事項</button>
     </div>
   </section>
 
@@ -180,7 +219,15 @@ body{padding-bottom:84px}
       <button class="card" data-go="fukumenu">浅草七福神一問一答</button>
       <button class="card" id="go5">5つのメイン寺・神社一問一答<small>30問</small></button>
       <button class="card" id="gopast">過去問<small>132問に含まれない問題</small></button>
+      <button class="card" data-go="review">自信なしの復習<small id="revsum"></small></button>
     </div>
+  </section>
+
+  <section class="view" id="review">
+    <h2>自信なしの復習</h2>
+    <div class="menu" id="revmenu"></div>
+    <div class="panel" id="revnone" hidden><p class="soon">「自信なし」を付けた問題はまだありません。<br>一問一答で回答を表示したあと、「自信なし」を押すとここに貯まります。</p></div>
+    <div class="btns" id="revclearrow" hidden><button class="btn ghost" id="revclear">記録をすべて消す</button></div>
   </section>
 
   <section class="view" id="q132menu">
@@ -199,7 +246,7 @@ body{padding-bottom:84px}
 
   <section class="view" id="fukulist">
     <h2>浅草七福神 一覧</h2>
-    <div class="panel"><ul class="list" id="fukuul"></ul></div>
+    <div class="panel"><ol class="fuku" id="fukuul"></ol></div>
   </section>
 
   <section class="view" id="play">
@@ -211,6 +258,10 @@ body{padding-bottom:84px}
       <div id="pfin"></div>
       <div class="btns" id="prow1">
         <button class="btn" id="pshow">回答を表示</button>
+      </div>
+      <div class="btns judge" id="prow2" hidden>
+        <button class="btn ok" id="pok">覚えた</button>
+        <button class="btn ng" id="png">自信なし</button>
       </div>
       <div class="btns">
         <button class="btn ghost" id="pprev">← 一つ前の問題</button>
@@ -340,10 +391,10 @@ const WALK_GENRES=["和菓子","スイーツ","揚げ物","ドリンク","軽食
 const GOURMET={rice:{name:'ご飯屋さん',genres:RICE_GENRES,shops:RICE.map(([n,g,h,p,d])=>({n,g,h,p,d}))},walk:{name:'食べ歩き',genres:WALK_GENRES,shops:WALK.map(([n,g,h,p,d])=>({n,g,h,p,d}))}};
 
 const LINES=[
-{n:"都営浅草線",r:"羽田から成田まで<br>羽田空港 → 成田空港",st:[["#","京急線"],["","羽田空港第1・第2ターミナル"],["","羽田空港第3ターミナル"],["","天空橋"],["","穴守稲荷"],["","大鳥居"],["","糀谷"],["","京急蒲田"],["","雑色"],["","六郷土手"],["","京急川崎"],["","八丁畷"],["","鶴見市場"],["","京急鶴見"],["","花月総持寺"],["","生麦"],["","京急新子安"],["","子安"],["","神奈川新町"],["","京急東神奈川"],["","神奈川"],["","新馬場"],["","北品川"],["","品川"],["","泉岳寺"],["#","都営浅草線"],["","泉岳寺"],["","三田"],["","大門"],["","新橋"],["","東銀座"],["","宝町"],["","日本橋"],["","人形町"],["","東日本橋"],["","浅草橋"],["","蔵前"],["","浅草"],["","本所吾妻橋"],["","押上"],["#","京成線・成田空港方面"],["","押上"],["","青砥"],["","京成高砂"],["","新柴又"],["~","矢切方面（北総線経由）"],["","東松戸"],["","新鎌ヶ谷"],["","千葉ニュータウン中央"],["","印旛日本医大"],["","成田湯川"],["","空港第2ビル"],["","成田空港"]]},
-{n:"銀座線",r:"浅草から渋谷まで",st:"G19 浅草,G18 田原町,G17 稲荷町,G16 上野,G15 上野広小路,G14 末広町,G13 神田,G12 三越前,G11 日本橋,G10 京橋,G09 銀座,G08 新橋,G07 虎ノ門,G06 溜池山王,G05 赤坂見附,G04 青山一丁目,G03 外苑前,G02 表参道,G01 渋谷".split(',').map(s=>s.split(' '))},
+{n:"都営浅草線",r:"羽田から成田まで<br>羽田空港 → 成田空港",st:[["#", "京急線"], ["", "羽田空港第1・第2ターミナル"], ["", "羽田空港第3ターミナル"], ["", "天空橋"], ["", "穴守稲荷"], ["", "大鳥居"], ["", "糀谷"], ["", "京急蒲田"], ["", "雑色"], ["", "六郷土手"], ["", "京急川崎"], ["", "八丁畷"], ["", "鶴見市場"], ["", "京急鶴見"], ["", "花月総持寺"], ["", "生麦"], ["", "京急新子安"], ["", "子安"], ["", "神奈川新町"], ["", "京急東神奈川"], ["", "神奈川"], ["", "新馬場"], ["", "北品川"], ["", "品川"], ["", "泉岳寺"], ["#", "都営浅草線"], ["", "泉岳寺"], ["", "三田"], ["", "大門"], ["", "新橋"], ["", "東銀座"], ["", "宝町"], ["", "日本橋"], ["", "人形町"], ["", "東日本橋"], ["", "浅草橋"], ["", "蔵前"], ["", "浅草"], ["", "本所吾妻橋"], ["", "押上"], ["#", "京成線・成田空港方面"], ["", "押上"], ["", "青砥"], ["", "京成高砂"], ["", "新柴又"], ["~", "矢切方面（北総線経由）"], ["", "東松戸"], ["", "新鎌ヶ谷"], ["", "千葉ニュータウン中央"], ["", "印旛日本医大"], ["", "成田湯川"], ["", "空港第2ビル"], ["", "成田空港"]]},
+{n:"銀座線",r:"浅草から渋谷まで<br>浅草 → 渋谷",st:"G19 浅草,G18 田原町,G17 稲荷町,G16 上野,G15 上野広小路,G14 末広町,G13 神田,G12 三越前,G11 日本橋,G10 京橋,G09 銀座,G08 新橋,G07 虎ノ門,G06 溜池山王,G05 赤坂見附,G04 青山一丁目,G03 外苑前,G02 表参道,G01 渋谷".split(',').map(s=>s.split(' '))},
 {n:"東武線",r:"浅草から伊勢崎まで<br>浅草 → 伊勢崎",st:[["","浅草"],["","とうきょうスカイツリー"],["","曳舟"],["","東向島"],["","鐘ケ淵"],["","堀切"],["","牛田"],["","北千住"],["","小菅"],["","五反野"],["","梅島"],["","西新井"],["","竹ノ塚"],["","谷塚"],["","草加"],["","獨協大学前〈草加松原〉"],["","新田"],["","蒲生"],["","新越谷"],["","越谷"],["","北越谷"],["","大袋"],["","せんげん台"],["","武里"],["","一ノ割"],["","春日部"],["","北春日部"],["","姫宮"],["","東武動物公園"],["","和戸"],["","久喜"],["","鷲宮"],["","花崎"],["","加須"],["","南羽生"],["","羽生"],["","川俣"],["","茂林寺前"],["","館林"],["","多々良"],["","県"],["","福居"],["","東武和泉"],["","足利市"],["","野州山辺"],["","韮川"],["","太田"],["","細谷"],["","木崎"],["","世良田"],["","境町"],["","剛志"],["","新伊勢崎"],["","伊勢崎"]]},
-{n:"つくばエクスプレス",r:"秋葉原から筑波まで",st:"TX01 秋葉原,TX02 新御徒町,TX03 浅草,TX04 南千住,TX05 北千住,TX06 青井,TX07 六町,TX08 八潮,TX09 三郷中央,TX10 南流山,TX11 流山セントラルパーク,TX12 流山おおたかの森,TX13 柏の葉キャンパス,TX14 柏たなか,TX15 守谷,TX16 みらい平,TX17 みどりの,TX18 万博記念公園,TX19 研究学園,TX20 つくば".split(',').map(s=>s.split(' '))}
+{n:"つくばエクスプレス",r:"秋葉原から筑波まで<br>秋葉原 → つくば",st:[["TX01", "秋葉原"], ["TX02", "新御徒町"], ["TX03", "浅草"], ["TX04", "南千住"], ["TX05", "北千住"], ["TX06", "青井"], ["TX07", "六町"], ["TX08", "八潮"], ["TX09", "三郷中央"], ["TX10", "南流山"], ["TX11", "流山セントラルパーク"], ["TX12", "流山おおたかの森"], ["TX13", "柏の葉キャンパス"], ["TX14", "柏たなか"], ["TX15", "守谷"], ["TX16", "みらい平"], ["TX17", "みどりの"], ["TX18", "万博記念公園"], ["TX19", "研究学園"], ["TX20", "つくば"]]},
 ];
 
 // ===== 画面遷移（履歴スタック）=====
@@ -365,23 +416,43 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(b
 $('nb').disabled=true;
 
 // ===== 一問一答（範囲内で重複なしランダム／一つ前に戻れる）=====
+// ===== 自信なしの記録（この端末のブラウザに保存）=====
+const RKEY='rev1';
+let REV=(()=>{try{return JSON.parse(localStorage.getItem(RKEY))||{};}catch(e){return {};}})();
+const saveREV=()=>{try{localStorage.setItem(RKEY,JSON.stringify(REV));}catch(e){}};
+const revList=k=>Object.keys(REV[k]||{}).map(Number).sort((a,b)=>a-b);
+const revCount=k=>revList(k).length;
+function setRev(k,i,ng){
+ if(!k&&k!==0)return;
+ if(ng){(REV[k]=REV[k]||{})[i]=1;}
+ else if(REV[k]){delete REV[k][i];if(!Object.keys(REV[k]).length)delete REV[k];}
+ saveREV();
+}
 const P={cfg:null,hist:[],ptr:-1,queue:[]};
 const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
 function renderQ(){
   const i=P.hist[P.ptr],c=P.cfg;
   P.fin=false;document.querySelector('#play .panel').classList.remove('fin');
   $('ptitle').textContent=c.title;
-  $('pcount').textContent=c.prefix?c.prefix+(i+1)+(c.label?'　［'+c.label+'］':''):(c.showTotal?(P.ptr+1)+' ／ '+(c.pool.length+(c.finale?1:0)):(P.ptr+1)+'問目');
+  const fin1=(c.finale&&!c.finale.nocount)?1:0;
+  let t=c.prefix?c.prefix+(i+1):'';
+  if(c.label)t+=(t?'　':'')+'［'+c.label+'］';
+  if(c.showTotal)t+=(t?'　':'')+(P.ptr+1)+' ／ '+(c.pool.length+fin1);
+  $('pcount').textContent=t||(P.ptr+1)+'問目';
   $('pq').textContent=c.data[i][0];
   $('pa').classList.remove('on');$('pa').textContent='';
+  $('prow1').hidden=false;$('prow2').hidden=true;
+  if(c.set&&REV[c.set]&&REV[c.set][i])$('pcount').insertAdjacentHTML('beforeend','<span class="ngmark">自信なし</span>');
   $('pprev').disabled=P.ptr<=0;
 }
 function showFinale(){
-  P.fin=true;
+  P.fin=true;$('prow1').hidden=false;$('prow2').hidden=true;
   const f=P.cfg.finale;
-  $('pfin').innerHTML='<div class="ask">'+f.ask+'</div><h3>'+f.title+'</h3><ul>'+f.items.map(x=>'<li>'+x+'</li>').join('')+'</ul><div class="btns"><button class="btn" id="prestart">最初からやり直す</button></div>';
+  const items=typeof f.items==='function'?f.items():f.items;
+  $('pfin').innerHTML='<div class="ask">'+(typeof f.ask==='function'?f.ask():f.ask)+'</div>'+(f.title?'<h3>'+f.title+'</h3>':'')+(items.length?'<ul>'+items.map(x=>'<li>'+x+'</li>').join('')+'</ul>':'')+'<div class="btns"><button class="btn" id="prestart">'+(f.again||'最初からやり直す')+'</button></div>';
   $('prestart').onclick=()=>{P.hist=[];P.ptr=-1;P.queue=[];nextQ();window.scrollTo({top:0,behavior:'smooth'});};
-  $('pcount').style.display='block';$('pcount').textContent=(P.cfg.pool.length+1)+' ／ '+(P.cfg.pool.length+1);
+  $('pcount').style.display='block';
+  $('pcount').textContent=f.nocount?'終了':(P.cfg.pool.length+1)+' ／ '+(P.cfg.pool.length+1);
   document.querySelector('#play .panel').classList.add('fin');
   $('pprev').disabled=false;
   window.scrollTo({top:0,behavior:'smooth'});
@@ -393,7 +464,11 @@ function nextQ(){
   renderQ();
 }
 hooks.play=e=>{P.cfg=e.cfg;P.fin=false;P.hist=[];P.ptr=-1;P.queue=[];nextQ();};
-$('pshow').onclick=()=>{$('pa').textContent=P.cfg.data[P.hist[P.ptr]][1];$('pa').classList.add('on');};
+$('pshow').onclick=()=>{$('pa').textContent=P.cfg.data[P.hist[P.ptr]][1];$('pa').classList.add('on');
+  if(P.cfg.set){$('prow1').hidden=true;$('prow2').hidden=false;}};
+const judge=ng=>{setRev(P.cfg.set,P.hist[P.ptr],ng);nextQ();};
+$('pok').onclick=()=>judge(false);
+$('png').onclick=()=>judge(true);
 $('pnext').onclick=nextQ;
 $('pprev').onclick=()=>{if(P.fin){renderQ();return;}if(P.ptr>0){P.ptr--;renderQ();}};
 const range=(a,b)=>Array.from({length:b-a+1},(_,i)=>a-1+i);
@@ -401,12 +476,12 @@ const play=cfg=>push({id:'play',cfg});
 
 [[1,20],[21,40],[41,60],[61,80],[81,100],[101,132]].forEach(([a,b])=>{
   const c=document.createElement('button');c.className='card';c.textContent=a+'〜'+b;
-  c.onclick=()=>play({title:'公式の132問',data:QA,pool:range(a,b),prefix:'Q',label:a+'〜'+b+'（順番どおり）',ordered:true});
+  c.onclick=()=>play({set:'q132',title:'公式の132問',data:QA,pool:range(a,b),prefix:'Q',label:a+'〜'+b+'（順番どおり）',ordered:true});
   $('rangemenu').appendChild(c);});
 {const c=document.createElement('button');c.className='card';c.innerHTML='全てランダム<small>1〜132</small>';
- c.onclick=()=>play({title:'公式の132問',data:QA,pool:range(1,132),prefix:'Q',label:'全て'});$('rangemenu').appendChild(c);}
-$('gofuku1').onclick=()=>play({title:'七福神：寺社 → 七福神',data:FUKU1,pool:range(1,FUKU1.length),prefix:''});
-$('gofuku2').onclick=()=>play({title:'七福神：七福神 → 寺社',data:FUKU2,pool:range(1,FUKU2.length),prefix:''});
+ c.onclick=()=>play({set:'q132',title:'公式の132問',data:QA,pool:range(1,132),prefix:'Q',label:'全て'});$('rangemenu').appendChild(c);}
+$('gofuku1').onclick=()=>play({set:'fuku1',title:'七福神：寺社 → 七福神',data:FUKU1,pool:range(1,FUKU1.length),prefix:''});
+$('gofuku2').onclick=()=>play({set:'fuku2',title:'七福神：七福神 → 寺社',data:FUKU2,pool:range(1,FUKU2.length),prefix:''});
 const PAST=[
 ["待乳山聖天の瓦が挟まれている塀の名前は？","築地塀"],
 ["浅草で芋が有名な理由は？","隅田川を用いて川越から運ばれてきたため。"],
@@ -418,9 +493,33 @@ const PAST=[
 ["昔の人は何で時間を把握していた？","日時計"],
 ["宝蔵門の草鞋は何のためにある？また、どこの草鞋？","魔除け、山形県"]];
 const PAST_FIN={ask:"分からなかったら回数が多い研修生に聞いてください！",title:"過去の記述問題リスト",items:["今日のレーンは？","今日は何の日？","我利我利亡者の話は？","人間万事塞翁が馬とは？","知行合一とは？","郷に入れば郷に従うとは？","インサイドアウト、アウトサイドインとは？","スーパーオーガニックバーガーとは何のたとえ？"]};
-$('gopast').onclick=()=>play({title:'過去問',data:PAST,pool:range(1,PAST.length),prefix:'',ordered:true,showTotal:true,finale:PAST_FIN});
-$('go5').onclick=()=>play({title:'5つのメイン寺・神社',data:FIVE,pool:range(1,FIVE.length),prefix:''});
-$('fukuul').innerHTML=FUKU.map(([p,g],i)=>'<li><span>'+(i+1)+'. '+p+'</span><b>'+g+'</b></li>').join('');
+$('gopast').onclick=()=>play({set:'past',title:'過去問',data:PAST,pool:range(1,PAST.length),prefix:'',ordered:true,showTotal:true,finale:PAST_FIN});
+$('go5').onclick=()=>play({set:'five',title:'5つのメイン寺・神社',data:FIVE,pool:range(1,FIVE.length),prefix:''});
+// ===== 自信なしの復習 =====
+const SETS=[['q132','公式の132問',QA,'Q'],['fuku1','七福神：寺社 → 七福神',FUKU1,''],['fuku2','七福神：七福神 → 寺社',FUKU2,''],['five','5つのメイン寺・神社',FIVE,''],['past','過去問',PAST,'']];
+function playReview(k,name,data,prefix){
+ const pool=revList(k);if(!pool.length)return;
+ play({set:k,title:name+'：自信なしの復習',data,pool,prefix,ordered:true,showTotal:true,
+  finale:{nocount:true,ask:()=>'復習はここまでです。<br>残り '+revCount(k)+' 問',title:'',items:()=>[],again:'もう一度'}});
+}
+function revRefresh(){
+ const tot=SETS.reduce((n,[k])=>n+revCount(k),0);
+ $('revsum').textContent=tot?tot+'問':'まだありません';
+ const m=$('revmenu');m.innerHTML='';
+ SETS.forEach(([k,name,data,prefix])=>{
+  const n=revCount(k);if(!n)return;
+  const b=document.createElement('button');b.className='card';
+  b.innerHTML=name+'<span class="cnt">'+n+'問</span>';
+  b.onclick=()=>playReview(k,name,data,prefix);
+  m.appendChild(b);
+ });
+ $('revnone').hidden=tot>0;
+ $('revclearrow').hidden=!tot;
+}
+hooks.review=revRefresh;hooks.quizmenu=revRefresh;
+$('revclear').onclick=()=>{if(confirm('「自信なし」の記録をすべて消します。よろしいですか？')){REV={};saveREV();revRefresh();}};
+revRefresh();
+$('fukuul').innerHTML=FUKU.map(([p,g],i)=>'<li><i>'+(i+1)+'</i><span>'+p+'</span><b>'+g+'</b></li>').join('');
 
 // ===== 浅草グルメ（種類 → 系統 → 店名 → 店情報）=====
 const body=$('gbody'),gtitle=$('gtitle');
@@ -445,8 +544,12 @@ LINES.forEach(L=>{
   c.addEventListener('click',()=>c.classList.add('open'));
   b.addEventListener('click',e=>{e.stopPropagation();
     if(map.innerHTML){map.innerHTML='';b.textContent='路線図を表示';return;}
-    map.innerHTML='<ul class="st">'+L.st.map(([cd,nm,nt])=>cd==='#'?'<li class="hd">'+nm+'</li>':cd==='~'?'<li class="sub">'+nm+'</li>':'<li>'+(cd?'<span class="cd">'+cd+'</span>':'')+nm+(nt?'<span class="nt">'+nt+'</span>':'')+'</li>').join('')+'</ul>';
-    b.textContent='路線図を閉じる';});
+    map.innerHTML='<ul class="st">'+L.st.map(([cd,nm,nt])=>cd==='#'?'<li class="hd">'+nm+'</li>':cd==='~'?'<li class="sub">'+nm+'</li>':'<li data-n="'+nm+'">'+(cd?'<span class="cd">'+cd+'</span>':'')+nm+(nt?'<span class="nt">'+nt+'</span>':'')+'</li>').join('')+'</ul>';
+    b.textContent='路線図を閉じる';
+    // 浅草の行を目立たせて、画面の中央に来るように送る
+    const here=[...map.querySelectorAll('.st li')].find(li=>li.dataset.n==='浅草');
+    if(here){here.classList.add('org');setTimeout(()=>here.scrollIntoView({block:'center',behavior:'smooth'}),60);}
+  });
   $('lines').appendChild(c);
 });
 
@@ -560,6 +663,9 @@ function drawLabels(){
  if(!CM.map||!CM.lab||!CM.c)return;
  const g=CM.lab;g.clearLayers();
  const P=CM.c.coords,S=CM.steps,k=CM.k,all=CM.mode==='all';
+ // 引きの地図（全体表示など）では文字が重なって読めないので、通りの名前は出さない。拡大すると出る。
+ let z=18;try{z=CM.map.getZoom();}catch(e){}
+ if(z<17)return;
  let bd=null;try{bd=CM.map.getBounds().pad(-0.05);}catch(e){}
  const cand=[];
  S.forEach((s,j)=>{
